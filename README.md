@@ -7,8 +7,13 @@ This browser based web application to ...
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Hi, my name is Tianyou. I am excited to start this journey of creating a new app!
+<<<<<<< HEAD
 * Hi, my name is Gurshaan. I am ready to learn more about Git!
 * ...
+=======
+* Hi. my name is Gurshaan. I am ready to learn more about Git!
+* Hi, my name is Kamal. I was born to do this.
+>>>>>>> f99fd23a20cb30e5e91365a25a9bdf6613652785
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
