@@ -6,7 +6,6 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Hi, my name is Tianyou. I am excited to start the journey of creating a new app!
 * Hi, my name is Tianyou. I am excited to start this journey of creating a new app!
 * Hi. my name is Gurshaan. I am ready to learn more about Git!
 * Hi, my name is Kamal. I was born to do this.
