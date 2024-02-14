@@ -1,1 +1,29 @@
+.bg-info {
+    background-color: #5B7E84 !important; /* Light green for secondary backgrounds */
+}
 
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+    color: #005a00; /* Dark green for brand name & nav links for visibility */
+}
+
+.btn-info {
+    color: #f2fbf2; /* Lightest shade for text on info button for contrast */
+    background-color: #72b372; /* Light green for button background */
+    border-color: #005a00; /* Dark green for button border */
+}
+
+.btn-primary {
+    color: #f2fbf2; /* Lightest shade for text */
+    font-size: 150%;
+    background-color: #3b6064; /* Dark green for primary button background */
+    border-color: #b75858; /* Reddish-brown for border to use as accent */
+    border-width: thick;
+}
+
+body {
+    background-color: #e3f2fd; /* Lightest shade for body background to follow the 60% rule */
+}
+.navbar-brand{
+    font-family: 'Caveat', cursive; /*change the font name for what you have*/
+    font-size: 2.25rem;
+}
