@@ -22,7 +22,7 @@
 					<li class="nav-item"><a class="nav-link"><span>About</span></a></li>
 					<img class="bi" width="35" height="35" src="../images/AdobeStock_465543306.svg" />
 					<li class="nav-item"><a class="nav-link"><span>Profile</span></a></li>
-					<li class="nav-item"><a class="nav-link"><span onclick="logout()" id="authStatus"></span></a></li>
+					<li class="nav-item"><a class="nav-link"><span onclick="authStatus()" id="authStatus"></span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,26 +30,27 @@
 </nav>
 
 <script>
+	var isLogin = false;
 	firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            $('#authStatus').html('Logout');
-        } else {
-            $('#authStatus').html('Login');
-        }
-    });
+		if (user) {
+			$('#authStatus').html('Logout');
+			isLogin = true;
+		} else {
+			$('#authStatus').html('Login');
+		}
+	});
 
-	function logout() {
-		firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            firebase.auth().signOut().then(() => {
+	function authStatus() {
+		if(isLogin) {
+					firebase.auth().signOut().then(() => {
+						console.log('logged out')
+						location.reload();
+					}).catch((error) => {
+						console.log('nav log()', error)
+					});
+		} else {
+			location.href = 'login.html';
+		}
 
-			}).catch((error) => {
-
-			});
-        } else {
-            $("#main").load("../login.html");
-        }
-    });
-    
-}
+	}
 </script>
