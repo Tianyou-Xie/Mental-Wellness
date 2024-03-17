@@ -47,21 +47,25 @@
 	<div id="navigation"></div>
 
 	<main>
-		<div class="px-4 py-5 my-5 text-center">
+		<div class="px-4 py-5 text-center">
 			<h1 class="display-5 fw-bold">What's on your mind?</h1>
 			<h3>We're here to help</h3>
-			<div class="col-lg-6 mx-auto">
+			<!-- <div class="col-lg-6 mx-auto">
 				<img id='img' alt="profile picture" style="height: 35%; width: 15%;" src="./images/AdobeStock_465543306.svg" />
-			</div>
+			</div> -->
 		</div>
 
-		<div class="container text-center">
-			<div class="mb-3">
-				<input class="form-control form-control-lg" type="text" placeholder="Type a Question"
+    <div class="container text-start mb-5">
+      <p id="chat-goes-here"></p>
+      <p id="ai-chat-goes-here" class="text-end"></p>
+    </div>
+		<div class="container text-center fixed-bottom mb-4">
+			<div class="container mb-3">
+				<input class="form-control form-control-lg" id="message" type="text" placeholder="Type a Question"
 					aria-label=".form-control-lg example">
 			</div>
-			<div class="mb-3">
-				<button type="button" class="btn btn-outline-primary btn-lg">Submit</button>
+			<div class="container mb-5">
+				<button type="button" onclick="startChat()" class="form-control btn btn-outline-primary btn-lg">Submit</button>
 			</div>
 		</div>
 	</main>
@@ -69,8 +73,9 @@
 	<div id="footer"></div>
 
 	<script src="./scripts/firebaseAPI_TEAM99.js"></script>
-	<script src="./scripts/skeleton.js"></script>
 	<script src="./scripts/authentication.js"></script>
+	<script src="./scripts/skeleton.js"></script>
+	<script src="./scripts/script.js"></script>
 </body>
 
 </html>
