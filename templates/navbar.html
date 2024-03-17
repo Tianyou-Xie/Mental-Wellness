@@ -28,29 +28,3 @@
 		</div>
 	</div>
 </nav>
-
-<script>
-	var isLogin = false;
-	firebase.auth().onAuthStateChanged(function (user) {
-		if (user) {
-			$('#authStatus').html('Logout');
-			isLogin = true;
-		} else {
-			$('#authStatus').html('Login');
-		}
-	});
-
-	function authStatus() {
-		if(isLogin) {
-					firebase.auth().signOut().then(() => {
-						console.log('logged out')
-						location.reload();
-					}).catch((error) => {
-						console.log('nav log()', error)
-					});
-		} else {
-			location.href = 'login.html';
-		}
-
-	}
-</script>
