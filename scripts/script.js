@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 function authStatus() {
     if (isLogin) {
         firebase.auth().signOut().then(() => {
-            window.location.reload();
+            window.location.href = 'login.html';
         }).catch((error) => {
             console.log('nav log()', error)
         });
