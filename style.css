@@ -183,6 +183,18 @@ input[type=radio] {
     height: 30px;
 }
 
+#newuser {
+    display: none;
+}
+
+.newuser {
+    display: none;
+}
+
+#emotionIcons {
+    display: none;
+}
+
 /* Custom Radio Button End*/
 
 /* RESPONSIVE CSS
