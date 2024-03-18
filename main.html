@@ -47,20 +47,27 @@
   <div id="navigation"></div>
 
   <main>
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 py-1 my-5 text-center">
       <div class="col-lg-6 mx-auto">
         <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/AdobeStock_465543306.svg" />
       </div>
       <h1 class="display-4">Welcome back, <span class="display-5" id="name-goes-here"> friend</span></h1>
       <hr>
       <p class="display-6">How is your day</p>
-      <br />
+      <br>
+    </div>
 
-      <i class="fa-regular fa-face-sad-cry fa-3x"></i>
-      <i class="fa-regular fa-face-sad-tear fa-3x"></i>
-      <i class="fa-regular fa-face-meh fa-3x"></i>
-      <i class="fa-regular fa-face-smile fa-3x"></i>
-      <i class="fa-regular fa-face-laugh-beam fa-3x"></i>
+    <div class="px-1 py-1 my-1 text-center" id="emotionIcons">
+      <i id="sadcryIcon" class="fa-regular fa-face-sad-cry fa-3x"></i>
+      <i id="sadtearIcon" class="fa-regular fa-face-sad-tear fa-3x"></i>
+      <i id="mehIcon" class="fa-regular fa-face-meh fa-3x"></i>
+      <i id="smileIcon" class="fa-regular fa-face-smile fa-3x"></i>
+      <i id="laughIcon" class="fa-regular fa-face-laugh-beam fa-3x"></i>
+    </div>
+    
+    <div id="sentimentDisplay" style="text-align: center; margin-top: 20px;">
+      <p id="sentimentText"></p>
+      <p id="quoteText"></p>
     </div>
 
     <div class="container text-center">
