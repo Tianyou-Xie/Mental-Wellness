@@ -57,5 +57,8 @@ function startChat() {
         console.log(error)
         document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
+}
 
+function mainRedirect() {
+    location.href = 'main.html';
 }
