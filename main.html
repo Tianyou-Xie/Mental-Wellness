@@ -51,11 +51,11 @@
       <div class="col-lg-6 mx-auto">
         <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/AdobeStock_465543306.svg" />
       </div>
-      <h1 class="display-4">Welcome back, <span class="display-5" id="name-goes-here"> friend</span></h1>
+      <h1 class="display-4">Morning, <span style="font-size: 25pt;" id="name-goes-here"> friend</span></h1>
       <hr>
-      <p class="display-6">How is your day</p>
-      <br>
-    </div>
+      <p>Quote of the day: The best view comes after the hardest climb.</p>
+      <p class="display-6 newuser">How is your day</p>
+    </div>  
 
     <div class="px-1 py-1 my-1 text-center" id="emotionIcons">
       <i id="sadcryIcon" class="fa-regular fa-face-sad-cry fa-3x"></i>
@@ -77,6 +77,94 @@
 
       </div>
     </div>
+
+    <div id="newuser" class="container-fluid text-dark p-5 text-center">
+      <button type="button" class="btn btn-default btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get
+        Started</button>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header modal-header-primary">
+          <h1 class="display-4">Tell Us More</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <h3 class="display-5 text-center">Are you?</h3>
+                <form class="custom-form">
+                  <label class="form-control custom-form-control">
+                    <input type="radio" name="radio" /> Male
+                  </label>
+                  <label class="form-control custom-form-control">
+                    <input type="radio" name="radio" /> Female
+                  </label>
+                </form>
+              </div>
+              <div class="carousel-item">
+                <h3 class="display-5 text-center">Your Age Group?</h3>
+                <form class="custom-form">
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> 18-24
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> 25-34
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> 35-44
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> 45-54
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> 55 above
+                    </label>
+                </form>
+              </div>
+              <div class="carousel-item">
+                <h3 class="display-5 text-center">Your Occupation?</h3>
+                <form class="custom-form">
+                  <label class="form-control custom-form-control">
+                    <input type="radio" name="radio" /> Student
+                  </label>
+                  <label class="form-control custom-form-control">
+                    <input type="radio" name="radio" /> Employed
+                  </label>
+                  <label class="form-control custom-form-control">
+                    <input type="radio" name="radio" /> Unemployed
+                  </label>
+                </form>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <i class="fa fa-angle-left text-primary" aria-hidden="true"></i>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <i class="fa fa-angle-right text-primary" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" onclick="mainRedirect()" class="btn btn-primary">Submit</button>
+      </div>
+      </div>
+    </div>
+  </div>
   </main>
 
   <div id="footer"></div>
