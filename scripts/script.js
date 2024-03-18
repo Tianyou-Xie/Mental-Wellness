@@ -109,7 +109,7 @@ function handleIconClick(value) {
     }
     document.getElementById("sentimentText").innerText = sentimentText;
 
-    db.collection("quote").doc("tuesday").get().then((doc) => {
+    db.collection("quotes").doc("tuesday").get().then((doc) => {
       if (doc.exists) {
         document.getElementById("quoteText").innerText = doc.data().quote;
       } else {
