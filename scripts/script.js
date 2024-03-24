@@ -120,6 +120,7 @@ function startChat() {
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
     }).catch((error) => {
         console.log(error)
+        saveQuestion();
         document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
 
@@ -142,13 +143,13 @@ saveQuestion();
 function mainRedirect() {
     var Users = db.collection("users");
     Users.doc(docID)
-        .update({status: false, gender: 'male', occupation: 'student', age: 25})
-    .then(() => {
-        window.location.reload();
-    }).catch((error) => {
-        console.error("Error updating user: ", error);
-        alert('Error,check console')
-    });
+        .update({ status: false, gender: 'male', occupation: 'student', age: 25 })
+        .then(() => {
+            window.location.reload();
+        }).catch((error) => {
+            console.error("Error updating user: ", error);
+            alert('Error,check console')
+        });
 }
 
 function loginRedirect() {
