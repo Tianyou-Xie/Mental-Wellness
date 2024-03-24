@@ -36,7 +36,7 @@ function newUser() {
         .where("uid", "==", uid)
         .get()
         .then((querySnapshot) => {
-            if(!querySnapshot.empty) {
+            if (!querySnapshot.empty) {
                 const user = querySnapshot.docs[0].data()
                 docID = querySnapshot.docs[0].id;
                 newUser = querySnapshot.docs[0].data().status
@@ -44,7 +44,7 @@ function newUser() {
                 let btn = document.getElementById("newuser");
                 let emotion = document.getElementById("emotionIcons");
                 let daystatus = document.getElementsByClassName("newuser")[0];
-                if(newUser){
+                if (newUser) {
                     btn.style.display = "block";
                 } else {
                     emotion.style.display = "block";
@@ -86,23 +86,40 @@ function startChat() {
         return response.json()
     }).then((res) => {
         document.getElementById("ai-chat-goes-here").innerHTML = res.choices["0"].message.content;
+        saveQuestion();
     }).catch((error) => {
         console.log(error)
+        saveQuestion();
         document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
 
 }
 
+
+function saveQuestion() {
+    var questions = db.collection("questions");
+    var value = document.getElementById("message").value;
+        questions.add({
+            questions: value
+        }).then(function () {
+            console.log("Question Saved")
+        }).catch(function (error) {
+            console.error("Error creating user: ", error);
+            alert('Error signing in, check console')
+        });
+saveQuestion();
+}
+
 function mainRedirect() {
     var Users = db.collection("users");
     Users.doc(docID)
-        .update({status: false, gender: 'male', occupation: 'student', age: 25})
-    .then(() => {
-        window.location.reload();
-    }).catch((error) => {
-        console.error("Error updating user: ", error);
-        alert('Error,check console')
-    });
+        .update({ status: false, gender: 'male', occupation: 'student', age: 25 })
+        .then(() => {
+            window.location.reload();
+        }).catch((error) => {
+            console.error("Error updating user: ", error);
+            alert('Error,check console')
+        });
 }
 
 function updateFirestore(userId, value) {
