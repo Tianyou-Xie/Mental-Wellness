@@ -1,7 +1,7 @@
 var isLogin = false;
 var userName;
 var uid;
-var newUser;
+var newUserStatus;
 var userChat = [];
 var userChatDB = [];
 var chatHolder;
@@ -54,13 +54,14 @@ function newUser() {
     db.collection("users")
         .doc(uid)
         .get()
-        .then((doc) => {
-            if(!doc.empty && $(location).attr('pathname') == '/main.html') {
-                newUser = doc.data().status
+        .then((querySnapshot) => {
+            if(!querySnapshot.empty) {
+                // docID = querySnapshot.docs[0].id;
+                newUserStatus = querySnapshot.data().status
                 let btn = document.getElementById("newuser");
                 let emotion = document.getElementById("emotionIcons");
                 let daystatus = document.getElementsByClassName("newuser")[0];
-                if(newUser){
+                if (newUserStatus) {
                     btn.style.display = "block";
                 } else {
                     emotion.style.display = "block";
@@ -99,7 +100,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer PASTE_KEY_HERE"
+            "Authorization": "Bearer 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"
         }
     }).then((response) => {
         return response.json()
@@ -119,20 +120,34 @@ function startChat() {
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
     }).catch((error) => {
         console.log(error)
-        document.getElementById("chat-goes-here").innerHTML = "Error fetching result. Please try again or contact us"
+        document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
 
 }
 
+function saveQuestion() {
+    var questions = db.collection("questions");
+    var value = document.getElementById("message").value;
+        questions.add({
+            questions: value
+        }).then(function () {
+            console.log("Question Saved")
+        }).catch(function (error) {
+            console.error("Error creating user: ", error);
+            alert('Error signing in, check console')
+        });
+saveQuestion();
+}
+
 function mainRedirect() {
-    db.collection("users")
-        .doc(uid)
+    var Users = db.collection("users");
+    Users.doc(docID)
         .update({status: false, gender: 'male', occupation: 'student', age: 25})
     .then(() => {
         window.location.reload();
     }).catch((error) => {
         console.error("Error updating user: ", error);
-        alert("Error, check console");
+        alert('Error,check console')
     });
 }
 
@@ -220,19 +235,12 @@ function getsUserChats() {
             sessions.forEach((doc) => {
                 let getChat = doc.data().chat;
                 let sessionID = doc.id;
-                console.log(getChat)
 
                 let newcard = cardTemplate.content.cloneNode(true);
 				newcard.querySelector('.question').innerHTML = getChat[0].question;
 				newcard.querySelector('.answer').innerHTML = getChat[0].answer.substring(0, 100);
                 newcard.querySelector('a').href = "viewchat.html?sessionID=" + sessionID;
 				document.getElementById("hikes-go-here").appendChild(newcard);
-
-                // let newcard = cardTemplate.content.cloneNode(true);
-				// newcard.querySelector('.question').innerHTML = getChat[0].content;
-				// newcard.querySelector('.answer').innerHTML = getChat[1].content.substring(0, 100);
-                // newcard.querySelector('a').href = "viewchat.html?sessionID=" + sessionID;
-				// document.getElementById("hikes-go-here").appendChild(newcard);
             })
         })
         .catch((error) => {
@@ -242,16 +250,13 @@ function getsUserChats() {
 
 function viewChat() {
     let cardTemplate = document.getElementById("hikeCardTemplate");
-    let index = 1;
     db.collection("users")
         .doc(uid)
         .collection("questions")
         .doc(sessionID)
         .get()
         .then((res) => {
-            console.log(res.data())
             res.data().chat.forEach((data) => {
-                console.log(data)
                 let newcard = cardTemplate.content.cloneNode(true);
 				newcard.querySelector('.question').innerHTML = data.question;
 				newcard.querySelector('.answer').innerHTML = data.answer;
@@ -268,7 +273,6 @@ function editChat() {
         .doc(sessionID)
         .get()
         .then((res) => {
-            console.log("res", res.data())
             for(var i=0; i < res.data().chatAPI.length; i++){
                 userChat.push(res.data().chatAPI[i]);
                 if(chatHolder == undefined){
@@ -280,8 +284,6 @@ function editChat() {
             for(var i=0; i<res.data().chat.length; i++){
                 userChatDB.push(res.data().chat[i]);
             }
-            console.log("userChat", userChat)
-            console.log("userChatDB", userChatDB)
             document.getElementById("chat-goes-here").innerHTML = chatHolder;
         })
 }

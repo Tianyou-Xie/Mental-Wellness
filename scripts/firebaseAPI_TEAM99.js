@@ -2,12 +2,12 @@
 //  Your web app's Firebase configuration
 //----------------------------------------
 var firebaseConfig = {
-    apiKey: "AIzaSyCw1QrevjUcEZX1_1d56YwUX3ujRd9SUYY",
-    authDomain: "comp1800-demo-d3acd.firebaseapp.com",
-    projectId: "comp1800-demo-d3acd",
-    storageBucket: "comp1800-demo-d3acd.appspot.com",
-    messagingSenderId: "387059243675",
-    appId: "1:387059243675:web:0447f865eb2bd59539043e"
+    apiKey: "AIzaSyDoYY2YzzFB6OfBR-EKMh3IQerG4NNQ6Oo",
+    authDomain: "mental-wellness-ca12e.firebaseapp.com",
+    projectId: "mental-wellness-ca12e",
+    storageBucket: "mental-wellness-ca12e.appspot.com",
+    messagingSenderId: "558069897153",
+    appId: "1:558069897153:web:da97a3c4f9fa6f544f0140"
 };
 
 //--------------------------------------------
