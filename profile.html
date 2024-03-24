@@ -73,10 +73,27 @@
 		</div>
 	</main>
 
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Login</h1>
+        </div>
+        <div class="modal-body">
+          This feature is only available to registered users
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 	<div id="footer"></div>
 
 	<script src="./scripts/firebaseAPI_TEAM99.js"></script>
-	<script src="./scripts/authentication.js"></script>
 	<script src="./scripts/skeleton.js"></script>
 	<script src="./scripts/script.js"></script>
 </body>

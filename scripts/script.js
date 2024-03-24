@@ -2,7 +2,9 @@ var isLogin = false;
 var userName;
 var uid;
 var newUser;
-var docID;
+var userChat = [];
+var chatHolder;
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         $('#authStatus').html('Logout');
@@ -15,6 +17,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         newUser()
     } else {
         $('#authStatus').html('Login');
+        $('#staticBackdrop').modal('show'); 
     }
 });
 
@@ -31,12 +34,11 @@ function authStatus() {
 }
 
 function newUser() {
-    var Users = db.collection("users");
-    Users
-        .where("uid", "==", uid)
+    db.collection("users")
+        .doc(uid)
         .get()
         .then((querySnapshot) => {
-            if (!querySnapshot.empty) {
+            if(!querySnapshot.empty) {
                 const user = querySnapshot.docs[0].data()
                 docID = querySnapshot.docs[0].id;
                 newUser = querySnapshot.docs[0].data().status
@@ -50,8 +52,6 @@ function newUser() {
                     emotion.style.display = "block";
                     daystatus.style.display = "block";
                 }
-            } else {
-                console.log('not here')
             }
         })
         .catch((error) => {
@@ -61,23 +61,27 @@ function newUser() {
 
 function startChat() {
     var value = document.getElementById("message").value;
-    document.getElementById("chat-goes-here").innerHTML = value;
+
+    if(chatHolder != undefined){
+        chatHolder += "<p>"+value+"</p>";
+        document.getElementById("chat-goes-here").innerHTML = chatHolder;
+    } else {
+        document.getElementById("chat-goes-here").innerHTML = value;
+    }
+    chatHolder = undefined;
     document.getElementById("message").value = '';
     var url = "https://api.openai.com/v1/chat/completions";
 
-    var post = `{
+    let userObj = {"role": "user", "content": value};
+    userChat.push(userObj);
+    var post = {
         "model": "gpt-3.5-turbo",
-        "messages": [
-          {
-            "role": "user",
-            "content": "${value}"
-          }
-        ]
-    }`;
+        "messages": userChat
+    };
 
     fetch(url, {
         method: 'post',
-        body: post,
+        body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
             "Authorization": "Bearer PASTE_KEY_HERE"
@@ -86,10 +90,8 @@ function startChat() {
         return response.json()
     }).then((res) => {
         document.getElementById("ai-chat-goes-here").innerHTML = res.choices["0"].message.content;
-        saveQuestion();
     }).catch((error) => {
         console.log(error)
-        saveQuestion();
         document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
 
@@ -113,13 +115,13 @@ saveQuestion();
 function mainRedirect() {
     var Users = db.collection("users");
     Users.doc(docID)
-        .update({ status: false, gender: 'male', occupation: 'student', age: 25 })
-        .then(() => {
-            window.location.reload();
-        }).catch((error) => {
-            console.error("Error updating user: ", error);
-            alert('Error,check console')
-        });
+        .update({status: false, gender: 'male', occupation: 'student', age: 25})
+    .then(() => {
+        window.location.reload();
+    }).catch((error) => {
+        console.error("Error updating user: ", error);
+        alert('Error,check console')
+    });
 }
 
 function updateFirestore(userId, value) {
