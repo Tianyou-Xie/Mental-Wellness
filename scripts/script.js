@@ -3,6 +3,9 @@ var userName;
 var uid;
 var newUser;
 var docID;
+var userChat = [];
+var chatHolder;
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         $('#authStatus').html('Logout');
@@ -61,23 +64,27 @@ function newUser() {
 
 function startChat() {
     var value = document.getElementById("message").value;
-    document.getElementById("chat-goes-here").innerHTML = value;
+
+    if(chatHolder != undefined){
+        chatHolder += "<p>"+value+"</p>";
+        document.getElementById("chat-goes-here").innerHTML = chatHolder;
+    } else {
+        document.getElementById("chat-goes-here").innerHTML = value;
+    }
+    chatHolder = undefined;
     document.getElementById("message").value = '';
     var url = "https://api.openai.com/v1/chat/completions";
 
-    var post = `{
+    let userObj = {"role": "user", "content": value};
+    userChat.push(userObj);
+    var post = {
         "model": "gpt-3.5-turbo",
-        "messages": [
-          {
-            "role": "user",
-            "content": "${value}"
-          }
-        ]
-    }`;
+        "messages": userChat
+    };
 
     fetch(url, {
         method: 'post',
-        body: post,
+        body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
             "Authorization": "Bearer PASTE_KEY_HERE"
@@ -85,10 +92,20 @@ function startChat() {
     }).then((response) => {
         return response.json()
     }).then((res) => {
-        document.getElementById("ai-chat-goes-here").innerHTML = res.choices["0"].message.content;
+        let sysRes = res.choices["0"].message.content;
+        let obj = {"role": "assistant", "content": sysRes};
+        userChat.push(obj);
+        for(var i=0; i < userChat.length; i++){
+            if(chatHolder == undefined){
+                chatHolder = "<p>"+userChat[i].content+"</p>";
+            } else {
+                chatHolder += "<p>"+userChat[i].content+"</p>";
+            }
+        }
+        document.getElementById("chat-goes-here").innerHTML = chatHolder;
     }).catch((error) => {
         console.log(error)
-        document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
+        document.getElementById("chat-goes-here").innerHTML = "Error fetching result. Please try again or contact us"
     })
 
 }
