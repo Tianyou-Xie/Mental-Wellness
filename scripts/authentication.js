@@ -4,26 +4,26 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        var Users = db.collection("users");
-        Users.where("email", "==", authResult.user.email)
+        var user = authResult.user; 
+
+        db.collection("users")
+            .where("email", "==", user.email)
             .get()
             .then((querySnapshot) => {
                 if(!querySnapshot.empty) {
-                    const user = querySnapshot.docs[0].data()
+                    //const user = querySnapshot.docs[0].data()
                     window.location.href = 'main.html';
                 } else {
-                    console.log('first time user')
-                    Users.add({
-                        name: authResult.user.displayName,
-                        email: authResult.user.email,
+                    db.collection("users").doc(user.uid).set({
+                        name: user.displayName,
+                        email: user.email,
                         status: true,
-                        uid: authResult.user.uid,
                         gender: null,
                         age: null,
                         occupation: null
-                    }).then(function () {
+                    }).then(() => {
                         window.location.href = 'main.html';
-                    }).catch(function (error) {
+                    }).catch((error) => {
                         console.error("Error creating user: ", error);
                         alert('Error signing in, check console')
                     });
