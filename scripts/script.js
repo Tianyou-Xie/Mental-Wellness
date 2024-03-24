@@ -100,7 +100,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer PASTE_KEY_HERE"
         }
     }).then((response) => {
         return response.json()
