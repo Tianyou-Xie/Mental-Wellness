@@ -3,18 +3,35 @@ var userName;
 var uid;
 var newUser;
 var userChat = [];
+var userChatDB = [];
 var chatHolder;
+var getChat;
+var sessionID;
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         $('#authStatus').html('Logout');
         isLogin = true;
+        uid = user.uid;
+        userName = user.displayName;
+        let params = new URL( window.location.href );
+        sessionID = params.searchParams.get( "sessionID" );
         if ($(location).attr('pathname') == '/main.html') {
-            userName = user.displayName;
-            uid = user.uid;
             document.getElementById("name-goes-here").innerHTML = userName;
+            newUser()
         }
-        newUser()
+        if ($(location).attr('pathname') == '/profile.html') {
+            getsUserChats();
+        }
+        if ($(location).attr('pathname') == '/viewchat.html') {
+            viewChat();
+        }
+        if ($(location).attr('pathname') == '/ask.html' && sessionID != null) {
+            editChat();
+        }
+        if (localStorage.getItem("userChat") != null) {
+            saveChat();
+        }
     } else {
         $('#authStatus').html('Login');
         $('#staticBackdrop').modal('show'); 
@@ -69,6 +86,7 @@ function startChat() {
     document.getElementById("message").value = '';
     var url = "https://api.openai.com/v1/chat/completions";
 
+    console.log(userChat)
     let userObj = {"role": "user", "content": value};
     userChat.push(userObj);
     var post = {
@@ -88,7 +106,9 @@ function startChat() {
     }).then((res) => {
         let sysRes = res.choices["0"].message.content;
         let obj = {"role": "assistant", "content": sysRes};
+        let objDB = {"question": value, "answer": sysRes};
         userChat.push(obj);
+        userChatDB.push(objDB);
         for(var i=0; i < userChat.length; i++){
             if(chatHolder == undefined){
                 chatHolder = "<p>"+userChat[i].content+"</p>";
@@ -119,3 +139,156 @@ function mainRedirect() {
 function loginRedirect() {
     window.location.href = 'login.html';
 }
+
+// function saveChat() {
+//     console.log("sessionID1", sessionID)
+//     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
+//     if(sessionID == null){
+//         db.collection("users")
+//             .doc(uid)
+//             .collection("questions")
+//             .add({
+//                 chat: JSON.parse(localStorage.getItem("userChat")),
+//                 timestamp: timestamp,
+//                 chatAPI: JSON.parse(localStorage.getItem("chatAPI"))
+//             })
+//         .then(() => {
+//             localStorage.removeItem("userChat");
+//             localStorage.removeItem("chatAPI");
+//         }).catch((error) => {
+//             console.error("Error updating user: ", error);
+//             alert("Error, check console");
+//         });
+//     } else {
+//         db.collection("users")
+//             .doc(uid)
+//             .collection("questions")
+//             .doc(sessionID)
+//             .get()
+//         .   then((querySnapshot) => {
+//             if(!querySnapshot.empty) {
+//                 db.collection("users")
+//                     .doc(uid)
+//                     .collection("questions")
+//                     .doc(sessionID)
+//                     .update({
+//                         chat: JSON.parse(localStorage.getItem("userChat")),
+//                         timestamp: timestamp,
+//                         chatAPI: JSON.parse(localStorage.getItem("chatAPI"))
+//                     })
+//                 .then(() => {
+//                     localStorage.removeItem("userChat");
+//                 }).catch((error) => {
+//                     console.error("Error updating user: ", error);
+//                     alert("Error, check console");
+//                 });
+//             } else {
+//                 console.log("debug")
+//             }
+//         })
+//     }
+// }
+
+function saveChat(){
+    var timestamp = firebase.firestore.FieldValue.serverTimestamp();
+    db.collection("users")
+        .doc(uid)
+        .collection("questions")
+        .add({
+            chat: JSON.parse(localStorage.getItem("userChat")),
+            timestamp: timestamp,
+            chatAPI: JSON.parse(localStorage.getItem("chatAPI"))
+        })
+    .then(() => {
+        localStorage.removeItem("userChat");
+        localStorage.removeItem("chatAPI");
+    }).catch((error) => {
+        console.error("Error updating user: ", error);
+        alert("Error, check console");
+    });
+}
+
+function getsUserChats() {
+    let cardTemplate = document.getElementById("hikeCardTemplate");
+
+    db.collection("users")
+        .doc(uid)
+        .collection("questions")
+        .get()
+        .then((allSessions) => {
+            sessions = allSessions.docs;
+            sessions.forEach((doc) => {
+                let getChat = doc.data().chat;
+                let sessionID = doc.id;
+                console.log(getChat)
+
+                let newcard = cardTemplate.content.cloneNode(true);
+				newcard.querySelector('.question').innerHTML = getChat[0].question;
+				newcard.querySelector('.answer').innerHTML = getChat[0].answer.substring(0, 100);
+                newcard.querySelector('a').href = "viewchat.html?sessionID=" + sessionID;
+				document.getElementById("hikes-go-here").appendChild(newcard);
+
+                // let newcard = cardTemplate.content.cloneNode(true);
+				// newcard.querySelector('.question').innerHTML = getChat[0].content;
+				// newcard.querySelector('.answer').innerHTML = getChat[1].content.substring(0, 100);
+                // newcard.querySelector('a').href = "viewchat.html?sessionID=" + sessionID;
+				// document.getElementById("hikes-go-here").appendChild(newcard);
+            })
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function viewChat() {
+    let cardTemplate = document.getElementById("hikeCardTemplate");
+    let index = 1;
+    db.collection("users")
+        .doc(uid)
+        .collection("questions")
+        .doc(sessionID)
+        .get()
+        .then((res) => {
+            console.log(res.data())
+            res.data().chat.forEach((data) => {
+                console.log(data)
+                let newcard = cardTemplate.content.cloneNode(true);
+				newcard.querySelector('.question').innerHTML = data.question;
+				newcard.querySelector('.answer').innerHTML = data.answer;
+                newcard.querySelector('a').href = "ask.html?sessionID=" + sessionID;
+				document.getElementById("hikes-go-here").appendChild(newcard);
+            })
+        })
+}
+
+function editChat() {
+    db.collection("users")
+        .doc(uid)
+        .collection("questions")
+        .doc(sessionID)
+        .get()
+        .then((res) => {
+            console.log("res", res.data())
+            for(var i=0; i < res.data().chatAPI.length; i++){
+                userChat.push(res.data().chatAPI[i]);
+                if(chatHolder == undefined){
+                    chatHolder = "<p>"+res.data().chatAPI[i].content+"</p>";
+                } else {
+                    chatHolder += "<p>"+res.data().chatAPI[i].content+"</p>";
+                }
+            }
+            for(var i=0; i<res.data().chat.length; i++){
+                userChatDB.push(res.data().chat[i]);
+            }
+            console.log("userChat", userChat)
+            console.log("userChatDB", userChatDB)
+            document.getElementById("chat-goes-here").innerHTML = chatHolder;
+        })
+}
+
+window.addEventListener("beforeunload", function (event) {
+    if ($(location).attr('pathname') == '/ask.html' && userChat.length > 0 && sessionID == null) {
+        this.localStorage.setItem("userChat", JSON.stringify(userChatDB))
+        this.localStorage.setItem("chatAPI", JSON.stringify(userChat))
+    }
+});
