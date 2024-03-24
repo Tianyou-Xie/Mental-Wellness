@@ -2,7 +2,6 @@ var isLogin = false;
 var userName;
 var uid;
 var newUser;
-var docID;
 var userChat = [];
 var chatHolder;
 
@@ -18,6 +17,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         newUser()
     } else {
         $('#authStatus').html('Login');
+        $('#staticBackdrop').modal('show'); 
     }
 });
 
@@ -34,16 +34,12 @@ function authStatus() {
 }
 
 function newUser() {
-    var Users = db.collection("users");
-    Users
-        .where("uid", "==", uid)
+    db.collection("users")
+        .doc(uid)
         .get()
-        .then((querySnapshot) => {
-            if(!querySnapshot.empty) {
-                const user = querySnapshot.docs[0].data()
-                docID = querySnapshot.docs[0].id;
-                newUser = querySnapshot.docs[0].data().status
-                console.log('user', newUser)
+        .then((doc) => {
+            if(!doc.empty && $(location).attr('pathname') == '/main.html') {
+                newUser = doc.data().status
                 let btn = document.getElementById("newuser");
                 let emotion = document.getElementById("emotionIcons");
                 let daystatus = document.getElementsByClassName("newuser")[0];
@@ -53,8 +49,6 @@ function newUser() {
                     emotion.style.display = "block";
                     daystatus.style.display = "block";
                 }
-            } else {
-                console.log('not here')
             }
         })
         .catch((error) => {
@@ -111,89 +105,17 @@ function startChat() {
 }
 
 function mainRedirect() {
-    var Users = db.collection("users");
-    Users.doc(docID)
+    db.collection("users")
+        .doc(uid)
         .update({status: false, gender: 'male', occupation: 'student', age: 25})
     .then(() => {
         window.location.reload();
     }).catch((error) => {
         console.error("Error updating user: ", error);
-        alert('Error,check console')
+        alert("Error, check console");
     });
 }
 
-function updateFirestore(userId, value) {
-
-    var timestamp = firebase.firestore.FieldValue.serverTimestamp();
-
-    db.collection("users").doc(userId).collection("emotion").add({
-        value: value,
-        timestamp: timestamp
-    }).then(function () {
-        console.log("Document successfully updated!");
-    }).catch(function (error) {
-        console.error("Error updating document: ", error);
-    });
+function loginRedirect() {
+    window.location.href = 'login.html';
 }
-
-function handleIconClick(value) {
-    const user = auth.currentUser;
-    if (user) {
-        const userId = user.uid;
-        updateFirestore(userId, value);
-        document.getElementById("emotionIcons").style.display = "none";
-        let sentimentText;
-        switch (value) {
-            case 1:
-                sentimentText = "You are very sad today. I am so sorry to hear that...";
-                break;
-            case 2:
-                sentimentText = "You are sad today. What happened...";
-                break;
-            case 3:
-                sentimentText = "You are usual mind today. No news is good news!";
-                break;
-            case 4:
-                sentimentText = "You are happy today. Do you want to share with me?";
-                break;
-            case 5:
-                sentimentText = "You are very happy today. I am very happy to hear that!";
-                break;
-            default:
-                sentimentText = "";
-        }
-        document.getElementById("sentimentText").innerText = sentimentText;
-
-        db.collection("quotes").doc("tuesday").get().then((doc) => {
-            if (doc.exists) {
-                document.getElementById("quoteText").innerText = doc.data().quote;
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.error("Error getting document:", error);
-        });
-    } else {
-        console.log("No user is signed in.");
-    }
-}
-
-document.getElementById("sadcryIcon").addEventListener("click", function () {
-    handleIconClick(1);
-});
-
-document.getElementById("sadtearIcon").addEventListener("click", function () {
-    handleIconClick(2);
-});
-
-document.getElementById("mehIcon").addEventListener("click", function () {
-    handleIconClick(3);
-});
-
-document.getElementById("smileIcon").addEventListener("click", function () {
-    handleIconClick(4);
-});
-
-document.getElementById("laughIcon").addEventListener("click", function () {
-    handleIconClick(5);
-});
