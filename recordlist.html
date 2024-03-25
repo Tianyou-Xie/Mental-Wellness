@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Mental Wellness</title>
+  <title>Record List</title>
   <meta name="Mental Wellness Template" content="Comp 1800 App">
 
   <!-- Required meta tags -->
@@ -42,53 +42,55 @@
   <link href="style.css" rel="stylesheet">
 
 
-  <nav class="navbar navbar-expand-md bg-primary-subtle sticky-top border-bottom">
-	<div class="container">
-		<a class="navbar-brand d-md-none" href="main.html">
-			<img class="bi" width="35" height="35" src="../images/MentalWellnessLogo.png" />
-			<!-- <span>Mental Wellness</span> -->
-		</a>
-		<a class="navbar-brand d-md-none" href="main.html">
-			<span>Mental Wellness</span>
-		</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-			aria-controls="offcanvas" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasLabel">Menu</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			</div>
-			<div class="offcanvas-body">
-				<ul class="navbar-nav flex-grow-1 justify-content-between">
-					<li class="nav-item"><a class="nav-link" href="main.html"><span>Home</span></a></li>
-					<li class="nav-item"><a class="nav-link"><span>About</span></a></li>
-					<a href="main.html"><img class="bi" width="40" height="40" src="../images/MentalWellnessLogo.png" /></a>
-					<li class="nav-item"><a class="nav-link" href="profile.html"><span>Profile</span></a></li>
-					<li class="nav-item"><a class="nav-link"><span onclick="authStatus()" id="authStatus"></span></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</nav>
-
 </head>
 
 <body>
 
 
-
-
-
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold">Record List</h1>
-        <p>View a list of all you past emotions!</p>
+  <nav class="navbar navbar-expand-md bg-primary-subtle sticky-top border-bottom">
+    <div class="container">
+      <a class="navbar-brand d-md-none" href="main.html">
+        <img class="bi" alt="profile picture" width="35" height="35" src="../images/MentalWellnessLogo.png" />
+        <!-- <span>Mental Wellness</span> -->
+      </a>
+      <a class="navbar-brand d-md-none" href="main.html">
+        <span>Mental Wellness</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+        aria-controls="offcanvas" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav flex-grow-1 justify-content-between">
+            <li class="nav-item"><a class="nav-link" href="main.html"><span>Home</span></a></li>
+            <li class="nav-item"><a class="nav-link"><span>About</span></a></li>
+            <a href="main.html"><img class="bi" alt="profile picture" width="40" height="40"
+                src="../images/MentalWellnessLogo.png" /></a>
+            <li class="nav-item"><a class="nav-link" href="profile.html"><span>Profile</span></a></li>
+            <li class="nav-item"><a class="nav-link"><span onclick="authStatus()" id="authStatus"></span></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </nav>
+
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Record List</h1>
+    <p>View a list of all you past emotions!</p>
+  </div>
+
+  <div id="emotionRecordsContainer" class="text-center">
+    <div id="emotionRecords" class="d-inline-block"></div>
+  </div>
 
 
 
-  </main>
+
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -108,13 +110,14 @@
     </div>
   </div>
 
- 
+
 
   <div id="footer"></div>
 
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/recordlist.js"></script>
 </body>
 
 </html>

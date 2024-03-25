@@ -56,10 +56,10 @@ function handleIconClick(value) {
                 sentimentText = "It seems to be one of those days, lets talk about you!";
                 break;
             case 4:
-                sentimentText = "You are happy today.=! Do you want to share with me?";
+                sentimentText = "You are happy today. Do you want to share with me?";
                 break;
             case 5:
-                sentimentText = "You are very happy today, I am very happy to hear that!";
+                sentimentText = "You are very happy today! I am so happy to hear that!";
                 break;
             default:
                 sentimentText = "";
@@ -99,3 +99,7 @@ document.getElementById("smileIcon").addEventListener("click", function () {
 document.getElementById("laughIcon").addEventListener("click", function () {
     handleIconClick(5);
 });
+
+
+
+

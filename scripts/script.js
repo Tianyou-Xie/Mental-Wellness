@@ -137,12 +137,11 @@ function saveQuestion() {
             console.error("Error creating user: ", error);
             alert('Error signing in, check console')
         });
-saveQuestion();
 }
 
 function mainRedirect() {
     var Users = db.collection("users");
-    Users.doc(docID)
+    Users.doc(uid)
         .update({ status: false, gender: 'male', occupation: 'student', age: 25 })
         .then(() => {
             window.location.reload();
