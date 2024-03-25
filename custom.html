@@ -41,28 +41,54 @@
   <!-- Link to styles of your own -->
   <link href="style.css" rel="stylesheet">
 
+
+  <nav class="navbar navbar-expand-md bg-primary-subtle sticky-top border-bottom">
+	<div class="container">
+		<a class="navbar-brand d-md-none" href="main.html">
+			<img class="bi" width="35" height="35" src="../images/MentalWellnessLogo.png" />
+			<!-- <span>Mental Wellness</span> -->
+		</a>
+		<a class="navbar-brand d-md-none" href="main.html">
+			<span>Mental Wellness</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+			aria-controls="offcanvas" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasLabel">Menu</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body">
+				<ul class="navbar-nav flex-grow-1 justify-content-between">
+					<li class="nav-item"><a class="nav-link" href="main.html"><span>Home</span></a></li>
+					<li class="nav-item"><a class="nav-link"><span>About</span></a></li>
+					<a href="main.html"><img class="bi" width="40" height="40" src="../images/MentalWellnessLogo.png" /></a>
+					<li class="nav-item"><a class="nav-link" href="profile.html"><span>Profile</span></a></li>
+					<li class="nav-item"><a class="nav-link"><span onclick="authStatus()" id="authStatus"></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
 </head>
 
 <body>
-  <div id="navigation"></div>
 
-  <main>
+
+
+
+
     <div class="px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">View Sessions</h1>
-      <hr>
-      <p>Your past interactions with Chatbot</p>
+        <h1 class="display-5 fw-bold">Custom Report</h1>
+        <p>Here you will find your report of your daily inputted emotion for custom days</p>
     </div>
-    <hr>
-    <h4 class="display-15" style="text-align: center;"><a class="nav-link" href="editprofile.html">Edit Profile</a></h4>
-    <hr>
-    <div class="container d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-      <div class="list-group bd-example m-0 border-0">
-        <div class="alert alert-primary" role="alert">
-          <div id="hikes-go-here"></div>
-        </div>
-      </div>
+
+
+
   </main>
-  
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -76,26 +102,13 @@
           This feature is only available to registered users
         </div>
         <div class="modal-footer">
-          <a href="login.html"><button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button></a>
+          <button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button>
         </div>
       </div>
     </div>
   </div>
 
-  <template id="hikeCardTemplate">
-    <a class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <i class="fa-solid fa-folder-open fa-2x"></i>
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div>
-          <h6 class="mb-0 question">Another title here</h6>
-          <p class="mb-0 opacity-75 answer">Some placeholder content in a paragraph that goes a little longer so it
-            wraps
-            to a new line.</p>
-        </div>
-        <small class="opacity-50 text-nowrap">3d</small>
-      </div>
-    </a>
-  </template>
+ 
 
   <div id="footer"></div>
 
