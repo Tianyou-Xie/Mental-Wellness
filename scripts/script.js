@@ -295,3 +295,8 @@ window.addEventListener("beforeunload", function (event) {
         this.localStorage.setItem("chatAPI", JSON.stringify(userChat))
     }
 });
+
+
+function goBack() {
+    window.history.back();
+  }
