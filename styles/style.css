@@ -27,3 +27,36 @@ body {
     font-family: 'Caveat', cursive; /*change the font name for what you have*/
     font-size: 2.25rem;
 }
+
+
+#emotionRecordsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emotionRecords {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: justify;
+}
+
+.recordItem {
+    display: flex;
+    align-items: center;
+}
+
+.recordItem time {
+    margin-right: 10px; /* Adjust the spacing between time and emotion text */
+    width: 60px; /* Set a fixed width for time */
+    text-align: right; /* Align the time to the right */
+}
+
+.recordItem span {
+    margin-right: 10px; /* Adjust the spacing between emotion text and icon */
+}
+
+.recordItem i {
+    vertical-align: middle; /* Align the icon vertically */
+}

@@ -135,7 +135,6 @@ function saveQuestion() {
             console.error("Error creating user: ", error);
             alert('Error signing in, check console')
         });
-saveQuestion();
 }
 
 function mainRedirect() {
@@ -293,3 +292,8 @@ window.addEventListener("beforeunload", function (event) {
         this.localStorage.setItem("chatAPI", JSON.stringify(userChat))
     }
 });
+
+
+function goBack() {
+    window.history.back();
+  }

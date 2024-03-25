@@ -47,19 +47,19 @@ function handleIconClick(value) {
         let sentimentText;
         switch (value) {
             case 1:
-                sentimentText = "You are very sad today. I am so sorry to hear that...";
+                sentimentText = "Oh you are feeling sad today, Would you like to talk it?";
                 break;
             case 2:
-                sentimentText = "You are sad today. What happened...";
+                sentimentText = "You are feeling sad today, What happened? I'd love to hear from you!";
                 break;
             case 3:
-                sentimentText = "You are usual mind today. No news is good news!";
+                sentimentText = "It seems to be one of those days, lets talk about you!";
                 break;
             case 4:
                 sentimentText = "You are happy today. Do you want to share with me?";
                 break;
             case 5:
-                sentimentText = "You are very happy today. I am very happy to hear that!";
+                sentimentText = "You are very happy today! I am so happy to hear that!";
                 break;
             default:
                 sentimentText = "";
@@ -99,3 +99,7 @@ document.getElementById("smileIcon").addEventListener("click", function () {
 document.getElementById("laughIcon").addEventListener("click", function () {
     handleIconClick(5);
 });
+
+
+
+
