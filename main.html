@@ -49,9 +49,9 @@
   <main>
     <div class="px-4 py-1 my-5 text-center">
       <div class="col-lg-6 mx-auto">
-        <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/AdobeStock_465543306.svg" />
+        <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
       </div>
-      <h1 class="display-4">Morning, <span style="font-size: 25pt;" id="name-goes-here"> friend</span></h1>
+      <h1 class="display-4">Morning, <span style="font-size: 30pt;" id="name-goes-here"> friend</span></h1>
       <hr>
       <p>Quote of the day: The best view comes after the hardest climb.</p>
       <p class="display-6 newuser">How is your day</p>
@@ -79,11 +79,11 @@
     </div>
 
     <div id="newuser" class="container-fluid text-dark p-5 text-center">
-      <button type="button" class="btn btn-default btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get
+      <button type="button" class="btn btn-default btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Get
         Started</button>
     </div>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -167,10 +167,26 @@
   </div>
   </main>
 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Login</h1>
+        </div>
+        <div class="modal-body">
+          Dashboard can be viewed by logged in users
+        </div>
+        <div class="modal-footer">
+         <a href="login.html"><button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="footer"></div>
 
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-  <script src="./scripts/authentication.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
