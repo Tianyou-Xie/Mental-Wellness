@@ -48,15 +48,15 @@ body {
 }
 
 .recordItem time {
-    margin-right: 10px; /* Adjust the spacing between time and emotion text */
-    width: 60px; /* Set a fixed width for time */
-    text-align: right; /* Align the time to the right */
+    margin-right: 10px;
+    width: 60px;
+    text-align: right;
 }
 
 .recordItem span {
-    margin-right: 10px; /* Adjust the spacing between emotion text and icon */
+    margin-right: 10px;
 }
 
 .recordItem i {
-    vertical-align: middle; /* Align the icon vertically */
+    vertical-align: middle;
 }
