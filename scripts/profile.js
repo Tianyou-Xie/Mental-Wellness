@@ -5,12 +5,12 @@ function populateUserInfo() {
                 if (user) {
 
                     //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(uid)
+                    currentUser = db.collection("users").doc(user.uid)
                     //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             //get the data fields of the user
-                            let name = userDoc.data().name;
+                            let names = userDoc.data().name;
                             let age = userDoc.data().age;
                             let gender = userDoc.data().gender;
 
@@ -48,7 +48,7 @@ function editUserInfo() {
     gender = document.getElementById('gender').value;       //get the value of the field with id="cityInput"
     //b) update user's document in Firestore
     currentUser.update({
-        name:  name,
+        name: name,
         age: age,
         gender: gender
     })

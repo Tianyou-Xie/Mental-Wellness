@@ -87,7 +87,6 @@ function startChat() {
     document.getElementById("message").value = '';
     var url = "https://api.openai.com/v1/chat/completions";
 
-    console.log(userChat)
     let userObj = {"role": "user", "content": value};
     userChat.push(userObj);
     var post = {
@@ -132,7 +131,6 @@ function saveQuestion() {
         questions.add({
             questions: value
         }).then(function () {
-            console.log("Question Saved")
         }).catch(function (error) {
             console.error("Error creating user: ", error);
             alert('Error signing in, check console')
@@ -294,3 +292,8 @@ window.addEventListener("beforeunload", function (event) {
         this.localStorage.setItem("chatAPI", JSON.stringify(userChat))
     }
 });
+
+
+function goBack() {
+    window.history.back();
+  }
