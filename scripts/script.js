@@ -27,7 +27,24 @@ firebase.auth().onAuthStateChanged(function (user) {
             viewChat();
         }
         if ($(location).attr('pathname') == '/ask.html' && sessionID != null) {
-            editChat();
+            editChat();   
+            var input = document.getElementById("message");
+            input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startChat();
+            }
+            });
+        }
+        if ($(location).attr('pathname') == '/ask.html'){
+            var input = document.getElementById("message");
+            input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startChat();
+                // document.getElementById("myBtn").click();
+            }
+            });
         }
         if (localStorage.getItem("userChat") != null) {
             saveChat();
@@ -99,7 +116,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer PASTE_KEY_HERE"
         }
     }).then((response) => {
         return response.json()
