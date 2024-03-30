@@ -99,7 +99,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer PASTE_KEY_HERE"
+            "Authorization": "Bearer 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"
         }
     }).then((response) => {
         return response.json()
@@ -123,18 +123,6 @@ function startChat() {
         document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
     })
 
-}
-
-function saveQuestion() {
-    var questions = db.collection("questions");
-    var value = document.getElementById("message").value;
-        questions.add({
-            questions: value
-        }).then(function () {
-        }).catch(function (error) {
-            console.error("Error creating user: ", error);
-            alert('Error signing in, check console')
-        });
 }
 
 function mainRedirect() {
@@ -293,7 +281,6 @@ window.addEventListener("beforeunload", function (event) {
     }
 });
 
-
 function goBack() {
     window.history.back();
-  }
+}
