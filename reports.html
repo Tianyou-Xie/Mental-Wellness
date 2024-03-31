@@ -8,6 +8,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/images/MentalWellnessLogo.png">
 
 	<!------------------------------------------>
 	<!-- Bootstrap Library CSS JS CDN go here -->
@@ -78,19 +79,17 @@
 		</div>
 	</main>
 
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Login</h1>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content  rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+          <h5 class="mb-0">Not Logged In?</h5>
+          <p class="mb-0">This feature is only available to registered users.</p>
         </div>
-        <div class="modal-body">
-          This feature is only available to registered users
-        </div>
-        <div class="modal-footer">
-          <a href="login.html"><button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button></a>
+        <div class="modal-footer flex-nowrap p-0">
+          <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
+          <!-- <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> -->
         </div>
       </div>
     </div>
@@ -102,5 +101,4 @@
 	<script src="./scripts/skeleton.js"></script>
 	<script src="./scripts/script.js"></script>
 </body>
-
 </html>

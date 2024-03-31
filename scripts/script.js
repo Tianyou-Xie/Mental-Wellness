@@ -42,7 +42,6 @@ firebase.auth().onAuthStateChanged(function (user) {
             if (event.key === "Enter") {
                 event.preventDefault();
                 startChat();
-                // document.getElementById("myBtn").click();
             }
             });
         }
@@ -51,7 +50,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
     } else {
         $('#authStatus').html('Login');
-        $('#staticBackdrop').modal('show'); 
+        $('#staticBackdrop').modal('show');
     }
 });
 
@@ -155,7 +154,7 @@ function mainRedirect() {
 }
 
 function loginRedirect() {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 // function saveChat() {

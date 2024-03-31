@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: WellnessFont;
-    src: url(./fonts/ADAM.CG\ PRO.otf);
+    src: url(../fonts/ADAM.CG\ PRO.otf);
 }
 
 ul span {
@@ -24,9 +24,6 @@ span {
 @media (max-width: 768px) {
     .bi1 {
         display: none;
-    }
-    .container {
-        max-width: 960px;
     }
 }
 
