@@ -300,7 +300,6 @@ window.addEventListener("beforeunload", function (event) {
 
 function goBack() {
     window.history.back();
-<<<<<<< HEAD
   }
 
      // Get the current user's profile data
@@ -382,6 +381,3 @@ function goBack() {
 
     // Add submit event listener to the form
     document.getElementById("editProfileForm").addEventListener("submit", updateProfile);
-=======
-}
->>>>>>> db0e9c7ee50953f69a471b29d0ae43923c2e1457
