@@ -1,8 +1,9 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
+:root {
+    --form-control-color: rebeccapurple;
+}
 
 .container {
-    max-width: 960px;
+    /* max-width: 960px; */
 }
 
 @font-face {
@@ -20,23 +21,27 @@ span {
     font-size: 12pt;
 }
 
-/* .icon-link > .bi {
-    width: .75em;
-    height: .75em;
-  } */
-
-/* @media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-} */
+@media (max-width: 768px) {
+    .bi1 {
+        display: none;
+    }
+    .container {
+        max-width: 960px;
+    }
+}
 
 .bi {
     vertical-align: -.125em;
     fill: currentColor;
 }
 
-.nav-scroller {
+.bi1 {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+
+/* .nav-scroller {
     position: relative;
     z-index: 2;
     height: 2.75rem;
@@ -52,23 +57,19 @@ span {
     text-align: center;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-}
+} */
 
 body {
     padding-bottom: 3rem;
-    color: rgb(var(--bs-tertiary-color-rgb));
+    /* color: rgb(var(--bs-tertiary-color-rgb)); */
+    background-color: #e3f2fd;
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
     text-align: center;
 }
 
-/* rtl:begin:ignore */
 .marketing .col-lg-4 p {
     margin-right: .75rem;
     margin-left: .75rem;
@@ -97,18 +98,14 @@ body {
     color: #fff;
     padding: 9px 15px;
     border-bottom: 1px solid #eee;
-    background-color: #6c00fe;
+    /* background-color: #6c00fe; */
+    background-color: #e3f2fd;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
     -moz-border-radius-topright: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-}
-
-/* Custom Radio Button Start*/
-:root {
-    --form-control-color: rebeccapurple;
 }
 
 .custom-form {
@@ -137,15 +134,10 @@ body {
 }
 
 input[type="radio"] {
-    /* Add if not using autoprefixer */
     -webkit-appearance: none;
-    /* Remove most all native input styles */
     appearance: none;
-    /* For iOS < 15 */
     background-color: var(--form-background);
-    /* Not removed via appearance */
     margin: 0;
-
     font: inherit;
     color: currentColor;
     width: 1.15em;
@@ -165,7 +157,6 @@ input[type="radio"]::before {
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em var(--form-control-color);
-    /* Windows High Contrast Mode */
     background-color: CanvasText;
 }
 
@@ -195,13 +186,17 @@ input[type=radio] {
     display: none;
 }
 
-/* Custom Radio Button End*/
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-/* @media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
+/* .custom-navbar {
+    padding: 15px;
 } */
+
+.custom-footer-icons {
+    font-size: 2rem;
+    /* color: cornflowerblue; */
+}
+
+.custom-main-icons {
+    font-size: 2rem;
+    color: cornflowerblue;
+    border: none;
+}

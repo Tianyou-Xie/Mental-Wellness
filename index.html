@@ -8,6 +8,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/images/MentalWellnessLogo.png">
 
   <!------------------------------------------>
   <!-- Bootstrap Library CSS JS CDN go here -->
@@ -17,6 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Other libraries go here -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,118 +41,58 @@
   <script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
 
   <!-- Link to styles of your own -->
-  <link href="./styles/style.css" rel="stylesheet">
-
+  <link href="style.css" rel="stylesheet">
 </head>
-
 <body>
   <div id="navigation"></div>
-
-  <div class="container-fluid text-dark p-5 text-center">
-    <div class="col-lg-6 mx-auto">
-      <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/AdobeStock_465543306.svg" />
-    </div>
-    <div class="container p-5">
-      <h1 class="display-4">Welcome to Mental Wellness</h1>
-      <p class="lead">99 Problems 1 Solution</p>
-    </div>
-  </div>
-  <div class="container-fluid text-dark p-5 text-center">
-    <button type="button" class="btn btn-default btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get
-      Started</button>
-  </div>
-  <!-- Button trigger modal -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header modal-header-primary">
-          <h1 class="display-4">Tell Us More</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <h3 class="display-5 text-center">Are you?</h3>
-                <form class="custom-form">
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Male
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Female
-                  </label>
-                </form>
-              </div>
-              <div class="carousel-item">
-                <h3 class="display-5 text-center">Your Age Group?</h3>
-                <form class="custom-form">
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 18-24
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 25-34
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 35-44
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 45-54
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 55 above
-                    </label>
-                </form>
-              </div>
-              <div class="carousel-item">
-                <h3 class="display-5 text-center">Your Occupation?</h3>
-                <form class="custom-form">
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Student
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Employed
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Unemployed
-                  </label>
-                </form>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <i class="fa fa-angle-left text-primary" aria-hidden="true"></i>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-              <i class="fa fa-angle-right text-primary" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-        <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-        <button type="button" onclick="mainRedirect()" class="btn btn-primary">Submit</button>
+  <main>
+    <div class="pt-5 mt-5 mb-5 text-center">
+      <div class="col-lg-6 mx-auto">
+        <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
       </div>
+      <h1 class="display-5 fw-bold">Welcome to Mental Wellness</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Are you stressed and looking for a person to talk to? Come aboard Mental Wellness and find
+          your happiness.</p>
       </div>
     </div>
-  </div>
+
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-lg-4">
+          <img style="height: 55%; width: 55%;" src="./images/AdobeStock_502420483.svg">
+          <h2 class="fw-normal">User Friendly</h2>
+          <p>Get help with a touch of a button. Get help with a touch of a button. Get help with a touch of a button Get help with a touch of a button Get help with a touch of a button Get help with a touch of a button</p>
+        </div>
+        
+        <div class="col-lg-4">
+          <img id='img' alt="profile picture" style="height: 55%; width: 55%;" src="./images/AdobeStock_650028610.svg" />
+          <h2 class="fw-normal">Anonymous</h2>
+          <p>Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts Share your thoughts </p>
+        </div>
+        <div class="col-lg-4">
+          <img style="height: 55%; width: 55%;" src="./images/AdobeStock_570871703.svg">
+          <h2 class="fw-normal">Completely free</h2>
+          <p>Get access immediately Get access immediately Get access immediately Get access immediately Get access immediately Get access immediately Get access immediately Get access immediately Get access immediately</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <div class="position-relative p-5 text-center text-muted border border-dashed rounded-5 shadow">
+        <!-- <svg class="bi mt-5 mb-3" width="48" height="48"><use xlink:href="#check2-circle"></use></svg> -->
+        <!-- <i class="fa-solid fa-code"></i> -->
+        <h1 class="text-body-emphasis">Try our app for free</h1>
+        <p class="col-lg-6 mx-auto mb-4">This faded back jumbotron is useful for placeholder content. It's also a great way to add a bit of context to a page or section when no content is available and to encourage visitors to take a specific action.</p>
+          <button type="button" class="btn btn-default" aria-label="Close">Login</button>
+      </div>
+    </div>
+  </main>
 
   <div id="footer"></div>
 
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-  <script src="./scripts/authentication.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
-
 </html>

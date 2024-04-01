@@ -27,14 +27,30 @@ firebase.auth().onAuthStateChanged(function (user) {
             viewChat();
         }
         if ($(location).attr('pathname') == '/ask.html' && sessionID != null) {
-            editChat();
+            editChat();   
+            var input = document.getElementById("message");
+            input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startChat();
+            }
+            });
+        }
+        if ($(location).attr('pathname') == '/ask.html'){
+            var input = document.getElementById("message");
+            input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startChat();
+            }
+            });
         }
         if (localStorage.getItem("userChat") != null) {
             saveChat();
         }
     } else {
         $('#authStatus').html('Login');
-        $('#staticBackdrop').modal('show'); 
+        $('#staticBackdrop').modal('show');
     }
 });
 
@@ -125,18 +141,6 @@ function startChat() {
 
 }
 
-function saveQuestion() {
-    var questions = db.collection("questions");
-    var value = document.getElementById("message").value;
-        questions.add({
-            questions: value
-        }).then(function () {
-        }).catch(function (error) {
-            console.error("Error creating user: ", error);
-            alert('Error signing in, check console')
-        });
-}
-
 function mainRedirect() {
     var Users = db.collection("users");
     Users.doc(uid)
@@ -150,7 +154,7 @@ function mainRedirect() {
 }
 
 function loginRedirect() {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 // function saveChat() {
@@ -293,7 +297,6 @@ window.addEventListener("beforeunload", function (event) {
     }
 });
 
-
 function goBack() {
     window.history.back();
-  }
+}
