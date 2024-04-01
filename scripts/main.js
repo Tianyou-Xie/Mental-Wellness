@@ -22,7 +22,7 @@ function getNameFromAuth() {
         }
     });
 }
-getNameFromAuth(); //run the function
+getNameFromAuth();
 
 function updateFirestore(userId, value) {
 
@@ -100,22 +100,16 @@ document.getElementById("laughIcon").addEventListener("click", function () {
     handleIconClick(5);
 });
 
-
-// displays the quote based in input param string "tuesday", "monday", etc. 
 function readQuote(day) {
     db.collection("quotes").doc(day).onSnapshot(doc => {
         console.log("inside");
         console.log(doc.data());
         document.getElementById("quote-goes-here").innerHTML = doc.data().quote;
     })
-}
-// Comment out the next line (we will call this function from doAll())
-// readQuote("tuesday");       
+}     
 
-//Global variable pointing to the current user's Firestore document
 var currentUser;
 
-//Function that calls everything needed for the main page  
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -136,5 +130,5 @@ function doAll() {
         }
     });
 }
-doAll();
+// doAll();
 

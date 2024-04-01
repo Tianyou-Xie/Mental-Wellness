@@ -1,0 +1,62 @@
+.bg-info {
+    background-color: #5B7E84 !important;
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+    color: #005a00;
+}
+
+.btn-info {
+    color: #f2fbf2;
+    background-color: #72b372;
+    border-color: #005a00;
+}
+
+.btn-primary {
+    color: #f2fbf2;
+    font-size: 150%;
+    background-color: #3b6064;
+    border-color: #b75858;
+    border-width: thick;
+}
+
+body {
+    background-color: #e3f2fd;
+}
+.navbar-brand{
+    font-family: 'Caveat', cursive;
+    font-size: 2.25rem;
+}
+
+
+#emotionRecordsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emotionRecords {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: justify;
+}
+
+.recordItem {
+    display: flex;
+    align-items: center;
+}
+
+.recordItem time {
+    margin-right: 10px;
+    width: 60px;
+    text-align: right;
+}
+
+.recordItem span {
+    margin-right: 10px;
+}
+
+.recordItem i {
+    vertical-align: middle;
+}

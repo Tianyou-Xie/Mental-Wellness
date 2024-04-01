@@ -8,6 +8,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/images/MentalWellnessLogo.png">
 
   <!------------------------------------------>
   <!-- Bootstrap Library CSS JS CDN go here -->
@@ -17,6 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Other libraries go here -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,31 +42,41 @@
 
   <!-- Link to styles of your own -->
   <link href="style.css" rel="stylesheet">
-
 </head>
-
 <body>
   <div id="navigation"></div>
 
   <main>
-    <div class="px-4 py-1 my-5 text-center">
+    <div class="px-4 py-5 my-5 text-center">
       <div class="col-lg-6 mx-auto">
         <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
       </div>
       <h1 class="display-4">Welcome, <span style="font-size: 30pt;" id="name-goes-here"> friend</span></h1>
       <hr>
-      <p>Quote of the day: <p id="quote-goes-here"></p></p>
-    </div>  
+      <p>Quote of the day:
+      <p id="quote-goes-here"></p>
+      </p>
+    </div>
 
     <div class="px-1 py-1 my-1 text-center" id="emotionIcons">
       <p class="display-6 newuser">How is your day?</p>
-      <i id="sadcryIcon" class="fa-regular fa-face-sad-cry fa-3x"></i>
-      <i id="sadtearIcon" class="fa-regular fa-face-sad-tear fa-3x"></i>
-      <i id="mehIcon" class="fa-regular fa-face-meh fa-3x"></i>
-      <i id="smileIcon" class="fa-regular fa-face-smile fa-3x"></i>
-      <i id="laughIcon" class="fa-regular fa-face-laugh-beam fa-3x"></i>
+      <button type="button" class="btn btn-outline-danger shadow custom-main-icons">
+        <i id="sadcryIcon" class="fa-regular fa-face-sad-cry fa-2x"></i>
+      </button>
+      <button type="button" class="btn btn-outline-danger shadow custom-main-icons">
+        <i id="sadtearIcon" class="fa-regular fa-face-sad-tear fa-2x"></i>
+      </button>
+      <button type="button" class="btn btn-outline-light shadow custom-main-icons">
+        <i id="mehIcon" class="fa-regular fa-face-meh fa-2x"></i>
+      </button>
+      <button type="button" class="btn btn-outline-primary shadow custom-main-icons">
+        <i id="smileIcon" class="fa-regular fa-face-smile fa-2x"></i>
+      </button>
+      <button type="button" class="btn btn-outline-primary shadow custom-main-icons">
+        <i id="laughIcon" class="fa-regular fa-face-laugh-beam fa-2x"></i>
+      </button>
     </div>
-    
+
     <div id="sentimentDisplay" style="text-align: center; margin-top: 20px;">
       <p id="sentimentText"></p>
       <p id="quoteText"></p>
@@ -84,39 +96,39 @@
     </div>
 
     <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header modal-header-primary">
-          <h1 class="display-4">Tell Us More!</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header modal-header-primary">
+            <h1 class="display-4">Tell Us More!</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
 
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <h3 class="display-5 text-center">Are you?</h3>
-                <form class="custom-form">
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Male
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Female
-                  </label>
-                </form>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
               </div>
-              <div class="carousel-item">
-                <h3 class="display-5 text-center">Your Age Group?</h3>
-                <form class="custom-form">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <h3 class="display-5 text-center">Are you?</h3>
+                  <form class="custom-form">
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> Male
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> Female
+                    </label>
+                  </form>
+                </div>
+                <div class="carousel-item">
+                  <h3 class="display-5 text-center">Your Age Group?</h3>
+                  <form class="custom-form">
                     <label class="form-control custom-form-control">
                       <input type="radio" name="radio" /> 18-24
                     </label>
@@ -132,60 +144,57 @@
                     <label class="form-control custom-form-control">
                       <input type="radio" name="radio" /> 55 above
                     </label>
-                </form>
+                  </form>
+                </div>
+                <div class="carousel-item">
+                  <h3 class="display-5 text-center">Your Occupation?</h3>
+                  <form class="custom-form">
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> Student
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> Employed
+                    </label>
+                    <label class="form-control custom-form-control">
+                      <input type="radio" name="radio" /> Unemployed
+                    </label>
+                  </form>
+                </div>
               </div>
-              <div class="carousel-item">
-                <h3 class="display-5 text-center">Your Occupation?</h3>
-                <form class="custom-form">
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Student
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Employed
-                  </label>
-                  <label class="form-control custom-form-control">
-                    <input type="radio" name="radio" /> Unemployed
-                  </label>
-                </form>
-              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <i class="fa fa-angle-left text-primary" aria-hidden="true"></i>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <i class="fa fa-angle-right text-primary" aria-hidden="true"></i>
+              </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <i class="fa fa-angle-left text-primary" aria-hidden="true"></i>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-              <i class="fa fa-angle-right text-primary" aria-hidden="true"></i>
-            </button>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+            <button type="button" onclick="mainRedirect()" class="btn btn-primary">Submit</button>
           </div>
         </div>
-        <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-        <button type="button" onclick="mainRedirect()" class="btn btn-primary">Submit</button>
-      </div>
       </div>
     </div>
-  </div>
   </main>
 
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Login</h1>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content  rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+          <h5 class="mb-0">Not Logged In?</h5>
+          <p class="mb-0">This feature is only available to registered users.</p>
         </div>
-        <div class="modal-body">
-          Dashboard can be viewed by logged in users
-        </div>
-        <div class="modal-footer">
-         <a href="login.html"><button type="button" onclick="loginRedirect()" class="btn btn-primary">Login</button></a>
+        <div class="modal-footer flex-nowrap p-0">
+          <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
+          <!-- <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> -->
         </div>
       </div>
     </div>
   </div>
-
-
-
   
   <div id="footer"></div>
 
@@ -194,5 +203,4 @@
   <script src="./scripts/script.js"></script>
   <script src="./scripts/main.js"></script>
 </body>
-
 </html>
