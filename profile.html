@@ -32,6 +32,9 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+
 
   <!--Fontawesome CDN-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -48,9 +51,17 @@
 
   <main>
     <div class="px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">View Sessions</h1>
+      <h1 class="display-5 fw-bold">Profile</h1>
       <hr>
-      <p>Your past interactions with Chatbot</p>
+      <h1 class="display-4">Name, <span style="font-size: 30pt;" id="name-goes-here"> friend</span></h1>
+      <!-- <h1 class="display-4">Age, <span style="font-size: 30pt;" id="age-goes-here"> </span></h1>
+      <h1 class="display-4">Gender, <span style="font-size: 30pt;" id="gender-goes-here"> </span></h1> -->
+
+      <div id="profileInfo" class="display-4">
+        <p>Loading...</p>
+      </div>
+
+      <!-- <p>Your past interactions with Chatbot</p> -->
     </div>
     <hr>
     <h4 class="display-15" style="text-align: center;"><a class="nav-link" href="editprofile.html">Edit Profile</a></h4>
@@ -102,6 +113,8 @@
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/main.js"></script>
+
 </body>
 
 </html>

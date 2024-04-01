@@ -1,60 +1,79 @@
-var currentUser;               //points to the document of the user who is logged in
-function populateUserInfo() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.get()
-                        .then(userDoc => {
-                            //get the data fields of the user
-                            let names = userDoc.data().name;
-                            let age = userDoc.data().age;
-                            let gender = userDoc.data().gender;
-
-                            //if the data fields are not empty, then write them in to the form.
-                            if (name != null) {
-                                document.getElementById("name").value = name;
-                            }
-                            if (age != null) {
-                                document.getElementById("age").value = age;
-                            }
-                            if (gender != null) {
-                                document.getElementById("gender").value = gender;
-                            }
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log ("No user is signed in");
-                }
-            });
+ // Get the current user's profile data
+ function getUserProfile() {
+    const userId = "USER_ID"; // replace with your user ID or fetch dynamically
+    db.collection("users").doc(userId)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const userData = doc.data();
+          const age = userData.age;
+          const gender = userData.gender;
+          displayProfileInfo(age, gender);
+        } else {
+          console.log("No such document!");
         }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }
 
-//call the function to run it 
-populateUserInfo();
+  // Display user profile information
+  function displayProfileInfo(age, gender) {
+    const profileInfoDiv = document.getElementById("profileInfo");
+    profileInfoDiv.innerHTML = `
+      <p>Age: ${age}</p>
+      <p>Gender: ${gender}</p>
+    `;
+  }
 
-function editUserInfo() {
-    //Enable the form fields
-    document.getElementById('personalInfoFields').disabled = false;
- }
- function saveUserInfo() {
-    //enter code here
+  // Call the function to fetch and display user profile data
+  getUserProfile();
 
-    //a) get user entered values
-    name = document.getElementById('name').value;       //get the value of the field with id="nameInput"
-    age = document.getElementById('age').value;     //get the value of the field with id="schoolInput"
-    gender = document.getElementById('gender').value;       //get the value of the field with id="cityInput"
-    //b) update user's document in Firestore
-    currentUser.update({
-        name: name,
-        age: age,
-        gender: gender
+  const userId = "USER_ID"; // replace with your user ID or fetch dynamically
+  db.collection("users").doc(userId)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        const userData = doc.data();
+        document.getElementById("name").value = userData.name;
+        document.getElementById("age").value = userData.age;
+        document.getElementById("gender").value = userData.gender;
+      } else {
+        console.log("No such document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+
+
+// Update user profile data
+function updateProfile(event) {
+  event.preventDefault();
+  const userId = "USER_ID"; // replace with your user ID or fetch dynamically
+  const newName = document.getElementById("name").value;
+  const newAge = document.getElementById("age").value;
+  const newGender = document.getElementById("gender").value;
+
+  db.collection("users").doc(userId)
+    .update({
+      name: newName,
+      age: parseInt(newAge),
+      gender: newGender
     })
     .then(() => {
-        console.log("Document successfully updated!");
+      console.log("Document successfully updated!");
+      alert("Profile updated successfully!");
     })
-    //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
+    .catch((error) => {
+      console.error("Error updating document: ", error);
+      alert("Failed to update profile.");
+    });
 }
+
+// Call the function to fetch user profile data
+getUserProfile();
+
+// Add submit event listener to the form
+document.getElementById("editProfileForm").addEventListener("submit", updateProfile);
