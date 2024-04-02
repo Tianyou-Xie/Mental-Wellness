@@ -21,12 +21,20 @@ span {
     font-size: 12pt;
 }
 
+.custom-chatbot-div {
+    height:500px;
+    /* width:66%; */
+}
+
 @media (max-width: 768px) {
     .bi1 {
         display: none;
     }
     .container {
         max-width: 960px;
+    }
+    .custom-chatbot-div {
+        /* width: 92%; */
     }
 }
 

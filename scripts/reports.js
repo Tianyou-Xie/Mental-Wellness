@@ -93,7 +93,10 @@ const config = {
       },
       title: {
         display: true,
-        text: 'Emotional Damage Graph'
+        text: 'Emotional Damage Graph',
+        font: {
+            size: 30,
+        }
       }
     }
   },

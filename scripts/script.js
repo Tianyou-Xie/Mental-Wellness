@@ -94,10 +94,10 @@ function startChat() {
     var value = document.getElementById("message").value;
 
     if(chatHolder != undefined){
-        chatHolder += "<p>"+value+"</p>";
+        chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+value+"</p>";
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
     } else {
-        document.getElementById("chat-goes-here").innerHTML = value;
+        document.getElementById("chat-goes-here").innerHTML = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+value+"</p>";
     }
     chatHolder = undefined;
     document.getElementById("message").value = '';
@@ -127,16 +127,17 @@ function startChat() {
         userChatDB.push(objDB);
         for(var i=0; i < userChat.length; i++){
             if(chatHolder == undefined){
-                chatHolder = "<p>"+userChat[i].content+"</p>";
+                chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+userChat[i].content+"</p>";
             } else {
-                chatHolder += "<p>"+userChat[i].content+"</p>";
+                chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+userChat[i].content+"</p>";
             }
         }
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
     }).catch((error) => {
-        console.log(error)
-        saveQuestion();
-        document.getElementById("ai-chat-goes-here").innerHTML = "Error fetching result. Please try again"
+        console.log(error);
+        userChat = [];
+        userChatDB = [];
+        document.getElementById("chat-goes-here").innerHTML = "<p><i class='fa-solid fa-circle-user fa-2xl'></i> Sorry there has been an error fetching result, please try again later.</p>";
     })
 
 }
@@ -278,9 +279,9 @@ function editChat() {
             for(var i=0; i < res.data().chatAPI.length; i++){
                 userChat.push(res.data().chatAPI[i]);
                 if(chatHolder == undefined){
-                    chatHolder = "<p>"+res.data().chatAPI[i].content+"</p>";
+                    chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+res.data().chatAPI[i].content+"</p>";
                 } else {
-                    chatHolder += "<p>"+res.data().chatAPI[i].content+"</p>";
+                    chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+res.data().chatAPI[i].content+"</p>";
                 }
             }
             for(var i=0; i<res.data().chat.length; i++){
