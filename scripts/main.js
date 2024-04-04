@@ -33,19 +33,19 @@ function handleIconClick(value) {
         let sentimentText;
         switch (value) {
             case 1:
-                sentimentText = "Feeling sad? Select the chat option below to start a chat! We would love to hear from you!";
+                sentimentText = "Feeling awful? Select the chat option below to start a chat! We would love to hear from you!";
                 break;
             case 2:
-                sentimentText = "Not feeling the greatest? Lets have chat about it! Select the chat option below to get started!";
+                sentimentText = "Feeling sad today? Lets have chat about it! Select the chat option below to get started!";
                 break;
             case 3:
-                sentimentText = "One of those days? Lets try to make you feel better together! Start a chat and we can talk it out!";
+                sentimentText = "Just feeling neutral? Lets try to make you feel better together! Start a chat and we can talk it out!";
                 break;
             case 4:
-                sentimentText = "Feeling good today! Lets talk about what made you happy today! Start a chat and let's get going!";
+                sentimentText = "Feeling happy today! Lets talk about what made you happy today! Start a chat and let's get going!";
                 break;
             case 5:
-                sentimentText = "Wooooo! Feeling great today! Let me know whats making you feel this way! Start a chat and make me as happy as you!";
+                sentimentText = "Wooooo! Feeling awesome today! Let me know whats making you feel this way! Start a chat and make me as happy as you!";
                 break;
             default:
                 sentimentText = "";
