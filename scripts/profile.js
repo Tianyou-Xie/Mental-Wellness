@@ -10,7 +10,7 @@
           const gender = userData.gender;
           displayProfileInfo(age, gender);
         } else {
-          console.log("No such document!");
+        //   console.log("No such document!");
         }
       })
       .catch((error) => {
@@ -40,7 +40,7 @@
         document.getElementById("age").value = userData.age;
         document.getElementById("gender").value = userData.gender;
       } else {
-        console.log("No such document!");
+        // console.log("No such document!");
       }
     })
     .catch((error) => {
@@ -63,11 +63,11 @@ function updateProfile(event) {
       gender: newGender
     })
     .then(() => {
-      console.log("Document successfully updated!");
+    //   console.log("Document successfully updated!");
       alert("Profile updated successfully!");
     })
     .catch((error) => {
-      console.error("Error updating document: ", error);
+    //   console.error("Error updating document: ", error);
       alert("Failed to update profile.");
     });
 }

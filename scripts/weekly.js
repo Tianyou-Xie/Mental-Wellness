@@ -32,7 +32,7 @@ function retrieveEmotionRecords() {
                             existingChart.destroy();
                         }
                     }
-                    console.log(emotionData);
+                    // console.log(emotionData);
                     createChart(emotionData);
                     
                 })
@@ -40,7 +40,7 @@ function retrieveEmotionRecords() {
                     console.error("Error retrieving emotion records: ", error);
                 });
         } else {
-            console.log("No user is signed in");
+            // console.log("No user is signed in");
         }
     });
 }

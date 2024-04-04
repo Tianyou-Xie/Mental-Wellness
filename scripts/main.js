@@ -1,33 +1,19 @@
+var currentUser;
+
 function getNameFromAuth() {
     firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
         if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
             userName = user.displayName;
-            
-            //method #1:  insert with JS
             document.getElementById("name-goes-here").innerText = userName;
-
-            //method #2:  insert using jquery
-            //$("#name-goes-here").text(userName); //using jquery
-
-            //method #3:  insert using querySelector
-            //document.querySelector("#name-goes-here").innerText = userName
-
         } else {
             // No user is signed in.
-            console.log("No user is logged in");
         }
     });
 }
 getNameFromAuth();
 
 function updateFirestore(userId, value) {
-
     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
-
     db.collection("users").doc(userId).collection("emotion").add({
         value: value,
         timestamp: timestamp
@@ -70,7 +56,7 @@ function handleIconClick(value) {
             if (doc.exists) {
                 document.getElementById("quoteText").innerText = doc.data().quote;
             } else {
-                console.log("No such document!");
+                // console.log("No such document!");
             }
         }).catch((error) => {
             console.error("Error getting document:", error);
@@ -102,30 +88,23 @@ document.getElementById("laughIcon").addEventListener("click", function () {
 
 function readQuote(day) {
     db.collection("quotes").doc(day).onSnapshot(doc => {
-        console.log("inside");
-        console.log(doc.data());
         document.getElementById("quote-goes-here").innerHTML = doc.data().quote;
     })
-}     
+}
 
-var currentUser;
+const d = new Date();
+// document.getElementById("demo").innerHTML = d;
+console.log(d)
 
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            currentUser = db.collection("users").doc(user.uid); //global
-            console.log(currentUser);
-
-            // figure out what day of the week it is today
+            currentUser = db.collection("users").doc(user.uid);
             const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
             const d = new Date();
             let day = weekday[d.getDay()];
-
-            // the following functions are always called when someone is logged in
             readQuote(day);
         } else {
-            // No user is signed in.
-            console.log("No user is signed in");
             window.location.href = "login.html";
         }
     });

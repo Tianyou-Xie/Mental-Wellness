@@ -45,6 +45,62 @@ const data = {
     }
   ]
 };
+const data1 = {  
+    datasets: [{  
+        label: 'Dataset',  
+        data: [
+            {
+                "x": "2024-03-26T21:31:32.338Z",
+                "y": 3,
+                "dayOfWeek": "Tuesday"
+            },
+            {
+                "x": "2024-03-26T23:57:28.484Z",
+                "y": 4,
+                "dayOfWeek": "Tuesday"
+            },
+            {
+                "x": "2024-03-28T21:56:45.840Z",
+                "y": 3,
+                "dayOfWeek": "Thursday"
+            },
+            {
+                "x": "2024-03-30T15:16:18.391Z",
+                "y": 2,
+                "dayOfWeek": "Saturday"
+            },
+            {
+                "x": "2024-04-02T00:46:54.973Z",
+                "y": 3,
+                "dayOfWeek": "Monday"
+            }
+        ],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(255, 159, 64, 0.5)',
+            'rgba(255, 205, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(135, 62, 35, 0.5)',
+            'rgba(25, 18, 255, 0.5)',
+          ],
+        borderColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(255, 159, 64, 0.5)',
+            'rgba(255, 205, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(135, 62, 35, 0.5)',
+            'rgba(25, 18, 255, 0.5)',
+          ],  
+        tension: 0.1,  
+        fill: false,
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointHoverRadius: 15,
+        borderWidth: 2,
+    }]  
+};
 const config = {
   type: 'line',
   data: data,
@@ -101,4 +157,39 @@ const config = {
     }
   },
 };
-var myChart = new Chart(document.getElementById('myChart'), config, data, actions);
+// var myChart = new Chart(document.getElementById('myChart'), config, data, actions);
+var ctx = document.getElementById('myChart').getContext('2d');  
+var chart = new Chart(ctx, {  
+    type: 'line',  
+    data: data1,  
+    options: {  
+        scales: {  
+            x: {  
+                type: 'time', 
+                time: {  
+                    unit: 'day'
+                },  
+                title: {  
+                    display: true,  
+                    text: 'Date'  
+                }  
+            },  
+            y: {  
+                min: 1, 
+                suggestedMax: 7, 
+                maxTicksLimit: 1, 
+                ticks: {  
+                    stepSize: 1,  
+                    beginAtZero: true, 
+                    // callback: function(value, index, values) {  
+                    //     return value === 6 ? '' : value;  
+                    // }  
+                },  
+                title: {  
+                    display: true,  
+                    text: 'Emotion Record'
+                }  
+            }  
+        }  
+    }  
+});  

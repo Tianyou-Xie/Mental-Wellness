@@ -125,7 +125,7 @@ function retrieveEmotionRecords() {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            console.log(user.uid); //print the uid in the browser console
+            // console.log(user.uid); //print the uid in the browser console
             // Fetch emotion records from Firestore
             db.collection("users").doc(user.uid).collection("emotion")
                 .orderBy("timestamp", "desc")
@@ -180,7 +180,7 @@ function retrieveEmotionRecords() {
                 });
         } else {
             // No user is signed in.
-            console.log("No user is signed in");
+            // console.log("No user is signed in");
             window.location.href = "login.html";
         }
     });
