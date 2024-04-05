@@ -208,3 +208,23 @@ input[type=radio] {
     color: cornflowerblue;
     border: none;
 }
+
+.green {
+    color: green;
+}
+
+.light-green {
+    color: rgb(42, 198, 42);
+}
+
+.yellow {
+    color: rgb(180, 180, 73);
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}

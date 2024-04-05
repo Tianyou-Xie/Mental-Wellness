@@ -56,7 +56,27 @@ function createChart(emotionData) {
                 data: emotionData, 
                 borderColor: 'rgb(75, 192, 192)',  
                 tension: 0.1,  
-                fill: false  
+                fill: false,
+                pointStyle: 'circle',
+                pointRadius: 5,
+                pointHoverRadius: 15,
+                borderWidth: 1,
+                backgroundColor: emotionData.map(point => {
+                    switch (point.y) {
+                        case 1:
+                            return 'red';
+                        case 2:
+                            return 'orange';
+                        case 3:
+                            return 'yellow';
+                        case 4:
+                            return 'rgb(42, 198, 42)';
+                        case 5:
+                            return 'green';
+                        default:
+                            return 'black'; // Default color
+                    }
+                })
             }]  
         },  
         options: {  
@@ -73,21 +93,55 @@ function createChart(emotionData) {
                 },  
                 y: {  
                     min: 0, 
-                    suggestedMax: 6, 
+                    max: 6, 
                     maxTicksLimit: 6, 
                     ticks: {  
                         stepSize: 1,  
-                        beginAtZero: true, 
+                        beginAtZero: true,
                         callback: function(value, index, values) {  
-                            return value === 6 ? '' : value;  
+                            // Return the emotion word for each y-axis label except for 0 and 6
+                            if (value !== 0 && value !== 6) {
+                                return toEmotionWord(value);
+                            }
+                            return '';
                         }  
                     },  
                     title: {  
                         display: true,  
-                        text: 'Emotion Record'
+                        text: 'Emotion'
                     }  
                 }  
-            }  
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var emotionValue = context.parsed.y;
+                            return 'Emotion: ' + toEmotionWord(emotionValue);
+                        }
+                    }
+                }
+            }
         }  
     });  
 }
+
+
+
+function toEmotionWord(value) {
+    switch (value) {
+        case 1:
+            return "Awful";
+        case 2:
+            return "Sad";
+        case 3:
+            return "Neutral";
+        case 4:
+            return "Happy";
+        case 5:
+            return "Great";
+        default:
+            return value;
+    }
+}
+
