@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             document.getElementById("name-goes-here").innerHTML = userName;
             newUser()
         }
-        if ($(location).attr('pathname') == '/profile.html') {
+        if ($(location).attr('pathname') == '/chathistory.html') {
             getsUserChats();
         }
         if ($(location).attr('pathname') == '/viewchat.html') {
