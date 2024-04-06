@@ -1,17 +1,5 @@
 var currentUser;
 
-function getNameFromAuth() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            userName = user.displayName;
-            document.getElementById("name-goes-here").innerText = userName;
-        } else {
-            // No user is signed in.
-        }
-    });
-}
-getNameFromAuth();
-
 function updateFirestore(userId, value) {
     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
     db.collection("users").doc(userId).collection("emotion").add({
@@ -50,19 +38,8 @@ function handleIconClick(value) {
             default:
                 sentimentText = "";
         }
+        document.getElementById("sentimentDisplay").style.display = "block";
         document.getElementById("sentimentText").innerText = sentimentText;
-
-        db.collection("quotes").doc("tuesday").get().then((doc) => {
-            if (doc.exists) {
-                document.getElementById("quoteText").innerText = doc.data().quote;
-            } else {
-                // console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.error("Error getting document:", error);
-        });
-    } else {
-        console.log("No user is signed in.");
     }
 }
 
@@ -92,22 +69,43 @@ function readQuote(day) {
     })
 }
 
-const d = new Date();
-// document.getElementById("demo").innerHTML = d;
-console.log(d)
+// create a function to update the date and time
+function updateDateTime() {
+    // create a new `Date` object
+    const now = new Date();
+    const dayNumber = now.getDay();
+    const hours = now.getHours();
+    const min = now.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
 
-function doAll() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            currentUser = db.collection("users").doc(user.uid);
-            const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-            const d = new Date();
-            let day = weekday[d.getDay()];
-            readQuote(day);
-        } else {
-            window.location.href = "login.html";
-        }
-    });
-}
-// doAll();
+    switch (dayNumber) {
+        case 1:
+            day = "Monday";
+            break;
+        case 2:
+            day = "Tuesday";
+            break;
+        case 3:
+            day = "Wednesday";
+            break;
+        case 4:
+            day = "Thursday";
+            break;
+        case 5:
+            day = "Friday";
+            break;
+        case 6:
+            day = "Saturday";
+            break;
+        case 5:
+            day = "Sunday";
+            break;
+        default:
+            day = "Not Valid Day";
+    }
 
+    document.querySelector('#daytime').textContent = day + ", " + hours + ":" + min + " " + ampm;
+  }
+
+  // call the `updateDateTime` function every second
+  setInterval(updateDateTime, 1000);

@@ -194,6 +194,10 @@ input[type=radio] {
     display: none;
 }
 
+#sentimentDisplay {
+    display: none;
+}
+
 /* .custom-navbar {
     padding: 15px;
 } */

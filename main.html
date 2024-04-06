@@ -47,16 +47,17 @@
   <div id="navigation"></div>
 
   <main>
-    <div class="px-4 py-5 my-5 text-center">
-      <div class="col-lg-6 mx-auto">
+    <div class="py-5 mt-5 text-center">
+      <div class="col-lg-6 mx-auto mb-4">
         <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
       </div>
-      <h1 class="display-4">Welcome, <span style="font-size: 30pt;" id="name-goes-here"> friend</span></h1>
+      <h1 class="display-4" id="name-goes-here"></h1>
+      <strong id="daytime"></strong>
       <hr>
-      <p class="display-6">How are you feeling day?</p>
+      <p class="display-6">How are you feeling today?</p>
     </div>
 
-    <div class="px-1 py-1 my-1 text-center" id="emotionIcons">
+    <div class="text-center" id="emotionIcons">
       <p class="newuser">Choose the icons that best represents your mood now?</p>
       <button type="button" class="btn btn-outline-danger shadow custom-main-icons">
         <i id="sadcryIcon" class="fa-regular fa-face-sad-cry fa-2x"></i>
@@ -75,17 +76,9 @@
       </button>
     </div>
 
-    <div id="sentimentDisplay" style="text-align: center; margin-top: 20px;">
-      <p id="sentimentText"></p>
-      <!-- <p id="quoteText"></p> -->
-    </div>
-
-    <div class="container text-center">
-      <div class="mb-3">
-      </div>
-      <div class="mb-3">
-
-      </div>
+    <div id="sentimentDisplay" class="text-center mx-5">
+      <p style="font-size: large;" id="sentimentText"></p>
+      <a type="button" class="btn btn-default btn-lg" href="ask.html">Chat Now!</a>
     </div>
 
     <div id="newuser" class="container-fluid text-dark p-5 text-center">

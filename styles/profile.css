@@ -1,0 +1,36 @@
+.card {
+    width: 600px;
+    background: #c1e8fb;
+    border: none;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    border: 2px solid #039BE5;
+    background-color: #e3f2fd;
+  }
+
+  input[type=text] {
+    background-color: #e3f2fd;
+  }
+
+  .form-floating>.form-control-plaintext~label::after, .form-floating>.form-control:focus~label::after, .form-floating>.form-control:not(:placeholder-shown)~label::after, .form-floating>.form-select~label::after {
+    background-color:#e3f2fd;
+  }
+
+  .form-floating>.form-control:not(:placeholder-shown)~label::after {
+    background-color:#e3f2fd;
+  }
+
+  .confirm-button {
+    font-family: Raleway-SemiBold;
+    font-size: 20px;
+    color: rgba(108, 88, 179, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 2px solid rgba(108, 89, 179, 0.75);
+    border-radius: 40px;
+    background: transparent;
+    transition: all 0.3s ease 0s;
+    padding: 20px;
+  }
