@@ -42,32 +42,29 @@
 
   <!-- Link to styles of your own -->
   <link href="style.css" rel="stylesheet">
-
 </head>
 
 <body>
   <div id="navigation"></div>
 
   <main>
-    <div class="px-4 pt-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">What's on your mind?</h1>
+    <div class="px-4 pt-5 mt-5 mb-3 text-center">
+      <h1>What's on your mind?</h1>
       <!-- <h3>We're here to help</h3> -->
-      <i class="fa-regular fa-comments fa-3x"></i>
+      <i class="fa-regular fa-comments"></i>
     </div>
 
     <div class="container text-start mb-5 shadow overflow-auto custom-chatbot-div">
       <div id="chat-goes-here"></div>
       <!-- <p id="ai-chat-goes-here" class="text-end"><i class="fa-regular fa-circle-user"></i>&nbsp;</p> -->
     </div>
-    <div class="container text-center mb-4">
       <div class="container mb-3">
         <textarea class="form-control form-control-lg" id="message" type="text" placeholder="Enter your thoughts"
           aria-label=".form-control-lg example"></textarea>
       </div>
-      <div class="container mb-5">
+      <div class="container">
         <button id="myBtn" type="button" onclick="startChat()" class="form-control btn btn-outline-primary btn-lg">Send</button>
       </div>
-    </div>
   </main>
 
   <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

@@ -27,6 +27,9 @@ span {
 }
 
 @media (max-width: 768px) {
+    .offcanvas {
+        background-color: #e3f2fd;
+    }
     .bi1 {
         display: none;
     }
@@ -232,3 +235,11 @@ input[type=radio] {
 .red {
     color: red;
 }
+
+.custom-nav-link {
+    cursor: pointer;
+}
+
+.float-left {
+    float: left;
+  }

@@ -51,18 +51,17 @@
   <div id="navigation"></div>
 
   <main>
-    <button onclick="goBack()" style="margin: 25px;">Go Back</button>
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 pt-5 mt-5 text-center">
+      <button type="button" onclick="goBack()" class="btn btn-outline-primary shadow float-left">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
       <h1 class="display-5 fw-bold">Weekly Report</h1>
       <p>Here you will find your report of your daily inputted emotion for the past 7 days!</p>
       <div style="display:inline-block;">
-        <canvas id="emotionChart" width="500" height="500"></canvas>
+        <canvas id="emotionChart" width="450" height="450"></canvas>
       </div>
     </div>
   </main>
-
-  
-  
 
   <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

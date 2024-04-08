@@ -49,6 +49,13 @@ firebase.auth().onAuthStateChanged(function (user) {
         if (localStorage.getItem("userChat") != null) {
             saveChat();
         }
+        if ($(location).attr('pathname') == '/profile.html') {
+            $('#alert').hide();
+            editProfile();
+        }
+        if ($(location).attr('pathname') == '/login.html') {
+            window.location.href = 'index.html';
+        }
     } else {
         $('#authStatus').html('Login');
         $('#staticBackdrop').modal('show');
@@ -252,4 +259,36 @@ window.addEventListener("beforeunload", function (event) {
 
 function goBack() {
     window.history.back();
+}
+
+function editProfile(){
+    db.collection("users")
+        .doc(uid)
+        .get()
+        .then((users) => {
+            let name = users.data().name;
+            let age = users.data().age;
+            let occupation = users.data().occupation;
+            document.getElementById("Name").value = name;
+            document.getElementById("Age").value = age;
+            document.getElementById("Occupation").value = occupation;
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function submitProfile(){
+    db.collection("users")
+        .doc(uid)
+        .update({
+        name: document.getElementById("Name").value,
+        age: document.getElementById("Age").value,
+        occupation: document.getElementById("Occupation").value
+    }).then(() => {
+        $('#alert').show();
+    }).catch((error) => {
+        console.error("Error creating user: ", error);
+        alert('Error signing in, check console')
+    });
 }
