@@ -69,9 +69,7 @@ function readQuote(day) {
     })
 }
 
-// create a function to update the date and time
 function updateDateTime() {
-    // create a new `Date` object
     const now = new Date();
     const dayNumber = now.getDay();
     const hours = now.getHours();
@@ -107,5 +105,4 @@ function updateDateTime() {
     document.querySelector('#daytime').textContent = day + ", " + hours + ":" + min + " " + ampm;
   }
 
-  // call the `updateDateTime` function every second
-  setInterval(updateDateTime, 1000);
+// setInterval(updateDateTime, 1000);

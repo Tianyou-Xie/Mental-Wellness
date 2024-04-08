@@ -22,7 +22,7 @@ span {
 }
 
 .custom-chatbot-div {
-    height:500px;
+    height:270pt;
     /* width:66%; */
 }
 
@@ -232,3 +232,11 @@ input[type=radio] {
 .red {
     color: red;
 }
+
+.custom-nav-link {
+    cursor: pointer;
+}
+
+.float-left {
+    float: left;
+  }

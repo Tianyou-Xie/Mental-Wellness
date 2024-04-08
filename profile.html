@@ -64,7 +64,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control form-control-lg shadow-sm" id="floatingInput" placeholder="name@example.com" value="Kamal Dolikay">
+              <input type="text" class="form-control form-control-lg shadow-sm" id="Name" placeholder="name@example.com" value="Kamal Dolikay" disabled>
               <label for="floatingInput" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
             </div>
           </div>
@@ -73,7 +73,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control form-control-lg shadow-sm" id="floatingInput" placeholder="name@example.com" value="25">
+              <input type="text" class="form-control form-control-lg shadow-sm" id="Age" placeholder="name@example.com" value="25" disabled>
               <label for="floatingInput" class="col-sm-2 col-form-label col-form-label-sm">Age</label>
             </div>
           </div>
@@ -82,13 +82,13 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control form-control-lg shadow-sm" id="floatingInput" placeholder="name@example.com" value="Student">
+              <input type="text" class="form-control form-control-lg shadow-sm" id="Occupation" placeholder="name@example.com" value="Student" disabled>
               <label for="floatingInput" class="col-sm-12 col-form-label col-form-label-sm">Occupation</label>
             </div>
           </div>
         </div>
-
-        <button class="btn btn-primary btn-block confirm-button">Submit</button>
+        <button onclick="edit()" class="btn btn-primary btn-block confirm-button">Edit</button>
+        <button id="Submit" class="btn btn-primary btn-block confirm-button" disabled>Submit</button>
       </div>
     </div>
   </div>
@@ -114,6 +114,7 @@
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/profile.js"></script>
 </body>
 
 </html>
