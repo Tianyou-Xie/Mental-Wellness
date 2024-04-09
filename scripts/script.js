@@ -136,7 +136,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer PASTE"
+            "Authorization": "Bearer PASTE_KEY_HERE"
         }
     }).then((response) => {
         return response.json()
@@ -164,9 +164,13 @@ function startChat() {
 }
 
 function mainRedirect() {
-    var Users = db.collection("users");
-    Users.doc(uid)
-        .update({ status: false, gender: 'male', occupation: 'student', age: 25 })
+    var gender = document.querySelector('input[name = gender]:checked').value
+    var occupation = document.querySelector('input[name = occupation]:checked').value
+    var age = document.querySelector('#age').value
+
+    db.collection("users")
+        .doc(uid)
+        .update({ status: false, gender: gender, occupation: occupation, age: age })
         .then(() => {
             window.location.reload();
         }).catch((error) => {

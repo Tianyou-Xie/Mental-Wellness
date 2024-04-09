@@ -108,46 +108,72 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <h3 class="display-5 text-center">Are you?</h3>
-                  <form class="custom-form">
+                  <form class="custom-form needs-validation">
                     <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> Male
+                      <input type="radio" id="g1" name="gender" value="male" /> Male
                     </label>
                     <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> Female
+                      <input type="radio" id="g2" name="gender" value="female" /> Female
                     </label>
                   </form>
                 </div>
                 <div class="carousel-item">
-                  <h3 class="display-5 text-center">Your Age Group?</h3>
+                  <h3 class="display-5 text-center">Your Age?</h3>
                   <form class="custom-form">
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 18-24
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 25-34
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 35-44
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 45-54
-                    </label>
-                    <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> 55 above
-                    </label>
+                    <select id="age" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                      <option selected>Select Age</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                      <option value="32">32</option>
+                      <option value="33">33</option>
+                      <option value="34">34</option>
+                      <option value="35">35</option>
+                      <option value="36">36</option>
+                      <option value="37">37</option>
+                      <option value="38">38</option>
+                      <option value="39">39</option>
+                      <option value="40">40</option>
+                      <option value="41">41</option>
+                      <option value="42">42</option>
+                      <option value="43">43</option>
+                      <option value="44">44</option>
+                      <option value="45">45</option>
+                      <option value="46">46</option>
+                      <option value="47">47</option>
+                      <option value="48">48</option>
+                      <option value="49">49</option>
+                      <option value="50">50</option>
+                      <option value="51">51</option>
+                      <option value="52">52</option>
+                      <option value="53">53</option>
+                      <option value="54">54</option>
+                      <option value="55">55</option>
+                    </select>
                   </form>
                 </div>
                 <div class="carousel-item">
                   <h3 class="display-5 text-center">Your Occupation?</h3>
                   <form class="custom-form">
                     <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> Student
+                      <input type="radio" id="o1" name="occupation" value="student" /> Student
                     </label>
                     <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> Employed
+                      <input type="radio" id="o2" name="occupation" value="employed" /> Employed
                     </label>
                     <label class="form-control custom-form-control">
-                      <input type="radio" name="radio" /> Unemployed
+                      <input type="radio" id="o3" name="occupation" value="unemployed" /> Unemployed
                     </label>
                   </form>
                 </div>
@@ -164,7 +190,7 @@
           </div>
           <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-            <button type="button" onclick="mainRedirect()" class="btn btn-primary">Submit</button>
+            <button type="button" onclick="mainRedirect()" class="btn btn-default btn-lg">Submit</button>
           </div>
         </div>
       </div>
