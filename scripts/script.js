@@ -18,8 +18,9 @@ firebase.auth().onAuthStateChanged(function (user) {
         let params = new URL( window.location.href );
         sessionID = params.searchParams.get( "sessionID" );
         if ($(location).attr('pathname') == '/main.html') {
-            document.getElementById("name-goes-here").innerHTML = "Welcome, " + userName;
-            newUser()
+            // document.getElementById("name-goes-here").innerHTML = "Welcome, " + userName;
+            getUser();
+            newUser();
         }
         if ($(location).attr('pathname') == '/chathistory.html') {
             getsUserChats();
@@ -53,9 +54,6 @@ firebase.auth().onAuthStateChanged(function (user) {
             $('#alert').hide();
             editProfile();
         }
-        // if ($(location).attr('pathname') == '/login.html') {
-        //     window.location.href = 'index.html';
-        // }
     } else {
         $('#authStatus').html('Login');
         $('#staticBackdrop').modal('show');
@@ -65,13 +63,28 @@ firebase.auth().onAuthStateChanged(function (user) {
 function authStatus() {
     if (isLogin) {
         firebase.auth().signOut().then(() => {
-            window.location.href = 'login.html';
+            window.location.href = '/login.html';
         }).catch((error) => {
             console.log('nav log()', error)
         });
     } else {
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
+}
+
+function getUser() {
+    db.collection("users")
+        .doc(uid)
+        .get()
+        .then((querySnapshot) => {
+            if(!querySnapshot.empty) {
+                let name = querySnapshot.data().name
+                document.getElementById("name-goes-here").innerHTML = "Welcome, " + name;
+            }
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
 }
 
 function newUser() {
@@ -261,7 +274,7 @@ function goBack() {
     window.history.back();
 }
 
-function editProfile(){
+function editProfile() {
     db.collection("users")
         .doc(uid)
         .get()
@@ -278,7 +291,7 @@ function editProfile(){
         });
 }
 
-function submitProfile(){
+function submitProfile() {
     db.collection("users")
         .doc(uid)
         .update({
