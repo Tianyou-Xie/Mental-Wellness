@@ -12,7 +12,7 @@ var uiConfig = {
             .then((querySnapshot) => {
                 if(!querySnapshot.empty) {
                     //const user = querySnapshot.docs[0].data()
-                    window.location.href = 'main.html';
+                    window.location.href = '/main.html';
                 } else {
                     db.collection("users").doc(user.uid).set({
                         name: user.displayName,
@@ -22,7 +22,7 @@ var uiConfig = {
                         age: null,
                         occupation: null
                     }).then(() => {
-                        window.location.href = 'main.html';
+                        window.location.href = '/main.html';
                     }).catch((error) => {
                         console.error("Error creating user: ", error);
                         alert('Error signing in, check console')

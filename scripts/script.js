@@ -53,9 +53,9 @@ firebase.auth().onAuthStateChanged(function (user) {
             $('#alert').hide();
             editProfile();
         }
-        if ($(location).attr('pathname') == '/login.html') {
-            window.location.href = 'index.html';
-        }
+        // if ($(location).attr('pathname') == '/login.html') {
+        //     window.location.href = 'index.html';
+        // }
     } else {
         $('#authStatus').html('Login');
         $('#staticBackdrop').modal('show');
@@ -123,7 +123,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer PASTE_KEY_HERE"
+            "Authorization": "Bearer PASTE"
         }
     }).then((response) => {
         return response.json()
@@ -163,7 +163,7 @@ function mainRedirect() {
 }
 
 function loginRedirect() {
-    window.location.href = 'index.html';
+    window.location.href = '/index.html';
 }
 
 function saveChat(){
