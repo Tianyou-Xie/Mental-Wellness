@@ -1,3 +1,5 @@
+/* Chart JS custom library */
+
 'use strict';
 
 window.chartColors = {

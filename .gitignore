@@ -6,4 +6,6 @@ node_modules/
 .firebase/
 public/
 firebase.json
-scripts/firebaseAPI_TEAM99.js
+firestore.indexes.json
+firestore.rules
+scripts/firebaseAPI_TEAM02.js

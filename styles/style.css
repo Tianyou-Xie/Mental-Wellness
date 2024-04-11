@@ -2,13 +2,9 @@
     --form-control-color: rebeccapurple;
 }
 
-.container {
-    /* max-width: 960px; */
-}
-
 @font-face {
     font-family: WellnessFont;
-    src: url(./fonts/ADAM.CG\ PRO.otf);
+    src: url(../fonts/ADAM.CG\ PRO.otf);
 }
 
 ul span {
@@ -22,22 +18,20 @@ span {
 }
 
 .custom-chatbot-div {
-    height:365px;
-    /* width:66%; */
+    height: 365px;
 }
 
 @media (max-width: 768px) {
     .offcanvas {
         background-color: #e3f2fd;
     }
+
     .bi1 {
         display: none;
     }
+
     .container {
         max-width: 960px;
-    }
-    .custom-chatbot-div {
-        /* width: 92%; */
     }
 }
 
@@ -51,33 +45,12 @@ span {
     fill: currentColor;
 }
 
-
-/* .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-} */
-
 body {
     padding-bottom: 3rem;
-    /* color: rgb(var(--bs-tertiary-color-rgb)); */
     background-color: #e3f2fd;
 }
 
 .marketing .col-lg-4 {
-    /* margin-bottom: 1.5rem; */
     text-align: center;
 }
 
@@ -200,13 +173,8 @@ input[type=radio] {
     display: none;
 }
 
-/* .custom-navbar {
-    padding: 15px;
-} */
-
 .custom-footer-icons {
     font-size: 2rem;
-    /* color: cornflowerblue; */
 }
 
 .custom-main-icons {
@@ -241,4 +209,26 @@ input[type=radio] {
 
 .float-left {
     float: left;
-  }
+}
+
+.custom-app-logo {
+    height: 35%;
+    width: 35%;
+}
+
+.custom-index-img {
+    height: 55%;
+    width: 55%;
+}
+
+.custom-canvas-report {
+    display: inline-block;
+}
+
+.custom-alert {
+    display: none;
+}
+
+.custom-list-group {
+    width: 400px !important;
+}

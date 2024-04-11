@@ -1,3 +1,4 @@
+// Initialize variables
 var isLogin = false;
 var userName;
 var uid;
@@ -8,17 +9,19 @@ var chatHolder;
 var getChat;
 var sessionID;
 
-
+// Check authentication state
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // User is logged in
         $('#authStatus').html('Logout');
         isLogin = true;
         uid = user.uid;
         userName = user.displayName;
-        let params = new URL( window.location.href );
-        sessionID = params.searchParams.get( "sessionID" );
+        let params = new URL(window.location.href);
+        sessionID = params.searchParams.get("sessionID");
+
+        // Perform actions based on current page
         if ($(location).attr('pathname') == '/main.html') {
-            // document.getElementById("name-goes-here").innerHTML = "Welcome, " + userName;
             getUser();
             newUser();
         }
@@ -29,22 +32,22 @@ firebase.auth().onAuthStateChanged(function (user) {
             viewChat();
         }
         if ($(location).attr('pathname') == '/ask.html' && sessionID != null) {
-            editChat();   
+            editChat();
             var input = document.getElementById("message");
             input.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                startChat();
-            }
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    startChat();
+                }
             });
         }
-        if ($(location).attr('pathname') == '/ask.html'){
+        if ($(location).attr('pathname') == '/ask.html') {
             var input = document.getElementById("message");
             input.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                startChat();
-            }
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    startChat();
+                }
             });
         }
         if (localStorage.getItem("userChat") != null) {
@@ -55,11 +58,13 @@ firebase.auth().onAuthStateChanged(function (user) {
             editProfile();
         }
     } else {
+        // User is not logged in
         $('#authStatus').html('Login');
         $('#staticBackdrop').modal('show');
     }
 });
 
+// Function to handle authentication status
 function authStatus() {
     if (isLogin) {
         firebase.auth().signOut().then(() => {
@@ -72,12 +77,13 @@ function authStatus() {
     }
 }
 
+// Function to get user data
 function getUser() {
     db.collection("users")
         .doc(uid)
         .get()
         .then((querySnapshot) => {
-            if(!querySnapshot.empty) {
+            if (!querySnapshot.empty) {
                 let name = querySnapshot.data().name
                 document.getElementById("name-goes-here").innerHTML = "Welcome, " + name;
             }
@@ -87,12 +93,13 @@ function getUser() {
         });
 }
 
+// Function to check if user is new
 function newUser() {
     db.collection("users")
         .doc(uid)
         .get()
         .then((querySnapshot) => {
-            if(!querySnapshot.empty) {
+            if (!querySnapshot.empty) {
                 // docID = querySnapshot.docs[0].id;
                 newUserStatus = querySnapshot.data().status
                 let btn = document.getElementById("newuser");
@@ -111,46 +118,48 @@ function newUser() {
         });
 }
 
+// Function to start a chat
 function startChat() {
     var value = document.getElementById("message").value;
 
-    if(chatHolder != undefined){
-        chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+value+"</p>";
+    if (chatHolder != undefined) {
+        chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + value + "</p>";
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
     } else {
-        document.getElementById("chat-goes-here").innerHTML = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+value+"</p>";
+        document.getElementById("chat-goes-here").innerHTML = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + value + "</p>";
     }
     chatHolder = undefined;
     document.getElementById("message").value = '';
     var url = "https://api.openai.com/v1/chat/completions";
 
-    let userObj = {"role": "user", "content": value};
+    let userObj = { "role": "user", "content": value };
     userChat.push(userObj);
     var post = {
         "model": "gpt-3.5-turbo",
         "messages": userChat
     };
 
+    // Fetch chat completion from OpenAI API
     fetch(url, {
         method: 'post',
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer PASTE_KEY_HERE"
+            "Authorization": "Bearer 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"
         }
     }).then((response) => {
         return response.json()
     }).then((res) => {
         let sysRes = res.choices["0"].message.content;
-        let obj = {"role": "assistant", "content": sysRes};
-        let objDB = {"question": value, "answer": sysRes};
+        let obj = { "role": "assistant", "content": sysRes };
+        let objDB = { "question": value, "answer": sysRes };
         userChat.push(obj);
         userChatDB.push(objDB);
-        for(var i=0; i < userChat.length; i++){
-            if(chatHolder == undefined){
-                chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+userChat[i].content+"</p>";
+        for (var i = 0; i < userChat.length; i++) {
+            if (chatHolder == undefined) {
+                chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + userChat[i].content + "</p>";
             } else {
-                chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+userChat[i].content+"</p>";
+                chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + userChat[i].content + "</p>";
             }
         }
         document.getElementById("chat-goes-here").innerHTML = chatHolder;
@@ -163,6 +172,7 @@ function startChat() {
 
 }
 
+// Function to redirect to main page after profile edit
 function mainRedirect() {
     var gender = document.querySelector('input[name = gender]:checked').value
     var occupation = document.querySelector('input[name = occupation]:checked').value
@@ -174,16 +184,18 @@ function mainRedirect() {
         .then(() => {
             window.location.reload();
         }).catch((error) => {
-            // console.error("Error updating user: ", error);
+            console.error("Error updating user: ", error);
             alert('Error,check console')
         });
 }
 
+// Function to redirect to login page
 function loginRedirect() {
     window.location.href = '/index.html';
 }
 
-function saveChat(){
+// Function to save chat data
+function saveChat() {
     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
     db.collection("users")
         .doc(uid)
@@ -193,15 +205,15 @@ function saveChat(){
             timestamp: timestamp,
             chatAPI: JSON.parse(localStorage.getItem("chatAPI"))
         })
-    .then(() => {
-        localStorage.removeItem("userChat");
-        localStorage.removeItem("chatAPI");
-    }).catch((error) => {
-        console.error("Error updating user: ", error);
-        alert("Error, check console");
-    });
+        .then(() => {
+            localStorage.removeItem("userChat");
+            localStorage.removeItem("chatAPI");
+        }).catch((error) => {
+            console.error("Error updating user: ", error);
+        });
 }
 
+// Function to get user chats
 function getsUserChats() {
     let cardTemplate = document.getElementById("hikeCardTemplate");
 
@@ -216,10 +228,10 @@ function getsUserChats() {
                 let sessionID = doc.id;
 
                 let newcard = cardTemplate.content.cloneNode(true);
-				newcard.querySelector('.question').innerHTML = getChat[0].question;
-				newcard.querySelector('.answer').innerHTML = getChat[0].answer.substring(0, 100);
+                newcard.querySelector('.question').innerHTML = getChat[0].question;
+                newcard.querySelector('.answer').innerHTML = getChat[0].answer.substring(0, 100);
                 newcard.querySelector('a').href = "viewchat.html?sessionID=" + sessionID;
-				document.getElementById("hikes-go-here").appendChild(newcard);
+                document.getElementById("hikes-go-here").appendChild(newcard);
             })
         })
         .catch((error) => {
@@ -227,6 +239,7 @@ function getsUserChats() {
         });
 }
 
+// Function to view chat details
 function viewChat() {
     let cardTemplate = document.getElementById("hikeCardTemplate");
     db.collection("users")
@@ -237,14 +250,15 @@ function viewChat() {
         .then((res) => {
             res.data().chat.forEach((data) => {
                 let newcard = cardTemplate.content.cloneNode(true);
-				newcard.querySelector('.question').innerHTML = data.question;
-				newcard.querySelector('.answer').innerHTML = data.answer;
+                newcard.querySelector('.question').innerHTML = data.question;
+                newcard.querySelector('.answer').innerHTML = data.answer;
                 newcard.querySelector('a').href = "ask.html?sessionID=" + sessionID;
-				document.getElementById("hikes-go-here").appendChild(newcard);
+                document.getElementById("hikes-go-here").appendChild(newcard);
             })
         })
 }
 
+// Function to edit chat
 function editChat() {
     db.collection("users")
         .doc(uid)
@@ -252,21 +266,22 @@ function editChat() {
         .doc(sessionID)
         .get()
         .then((res) => {
-            for(var i=0; i < res.data().chatAPI.length; i++){
+            for (var i = 0; i < res.data().chatAPI.length; i++) {
                 userChat.push(res.data().chatAPI[i]);
-                if(chatHolder == undefined){
-                    chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+res.data().chatAPI[i].content+"</p>";
+                if (chatHolder == undefined) {
+                    chatHolder = "<br><p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + res.data().chatAPI[i].content + "</p>";
                 } else {
-                    chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;"+res.data().chatAPI[i].content+"</p>";
+                    chatHolder += "<p><i class='fa-solid fa-circle-user fa-2xl'></i>&nbsp;" + res.data().chatAPI[i].content + "</p>";
                 }
             }
-            for(var i=0; i<res.data().chat.length; i++){
+            for (var i = 0; i < res.data().chat.length; i++) {
                 userChatDB.push(res.data().chat[i]);
             }
             document.getElementById("chat-goes-here").innerHTML = chatHolder;
         })
 }
 
+// Event listener to save chat data before page unload
 window.addEventListener("beforeunload", function (event) {
     if ($(location).attr('pathname') == '/ask.html' && userChat.length > 0 && sessionID == null) {
         this.localStorage.setItem("userChat", JSON.stringify(userChatDB))
@@ -274,10 +289,12 @@ window.addEventListener("beforeunload", function (event) {
     }
 });
 
+// Function to go back
 function goBack() {
     window.history.back();
 }
 
+// Function to edit profile
 function editProfile() {
     db.collection("users")
         .doc(uid)
@@ -295,17 +312,18 @@ function editProfile() {
         });
 }
 
+// Function to submit profile changes
 function submitProfile() {
     db.collection("users")
         .doc(uid)
         .update({
-        name: document.getElementById("Name").value,
-        age: document.getElementById("Age").value,
-        occupation: document.getElementById("Occupation").value
-    }).then(() => {
-        $('#alert').show();
-    }).catch((error) => {
-        console.error("Error creating user: ", error);
-        alert('Error signing in, check console')
-    });
+            name: document.getElementById("Name").value,
+            age: document.getElementById("Age").value,
+            occupation: document.getElementById("Occupation").value
+        }).then(() => {
+            $('#alert').show();
+        }).catch((error) => {
+            console.error("Error creating user: ", error);
+            alert('Error creating user, check console')
+        });
 }

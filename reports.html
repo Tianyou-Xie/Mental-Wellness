@@ -2,69 +2,63 @@
 <html lang="en">
 
 <head>
-	<title>Mental Wellness</title>
-	<meta name="Mental Wellness Template" content="Comp 1800 App">
+  <title>Mental Wellness</title>
+  <meta name="Mental Wellness Template" content="Comp 1800 App">
 
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/images/MentalWellnessLogo.png">
 
-	<!------------------------------------------>
-	<!-- Bootstrap Library CSS JS CDN go here -->
-	<!------------------------------------------>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-		</script>
+  <!------------------------------------------>
+  <!-- Bootstrap Library CSS JS CDN go here -->
+  <!------------------------------------------>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-	<!-- Other libraries go here -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Other libraries go here -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-	<!-------------------------------------------------------->
-	<!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-	<!-------------------------------------------------------->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-	<!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
 
-	<!-- Link to styles of your own -->
-	<link href="style.css" rel="stylesheet">
-  <link href="styles/history.css" rel="stylesheet">
-
-  <style>
-    .list-group{
-      width: 400px !important;
-    }
-  </style>
-
+  <!-- Link to styles of your own -->
+  <link href="./styles/style.css" rel="stylesheet">
+  <link href="./styles/history.css" rel="stylesheet">
 </head>
 
 <body>
-	<div id="navigation"></div>
+  <div id="navigation"></div>
 
-	<main>
-		<div class="px-4 py-5 mt-5 text-center">
-			<h1 class="display-5 fw-bold">User History</h1>
-			<p>You have used Mental Wellness for 183 days and recorded 276 emotions</p>
-		</div>
+  <main>
+    <div class="px-4 py-5 mt-5 text-center">
+      <h1 class="display-5 fw-bold">User History</h1>
+      <p>You have used Mental Wellness for 183 days and recorded 276 emotions</p>
+    </div>
 
     <div class="container d-flex flex-column flex-md-row gap-4 align-items-center justify-content-center">
-      <div class="list-group bd-example m-0 border-0 blog-post">
+      <div class="list-group bd-example m-0 border-0 blog-post custom-list-group">
         <div class="alert" role="alert">
-          <a href="weekly.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4" aria-current="true">
+          <a href="/weekly.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4"
+            aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
                 <h4 class="mb-0 question">Weekly Report</h6>
@@ -72,7 +66,8 @@
               <i class="fa-solid fa-angle-right"></i>
             </div>
           </a>
-          <a href="recordlist.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4" aria-current="true">
+          <a href="/recordlist.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4"
+            aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
                 <h4 class="mb-0 question">Emotions List</h6>
@@ -80,7 +75,8 @@
               <i class="fa-solid fa-angle-right"></i>
             </div>
           </a>
-          <a href="chathistory.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4" aria-current="true">
+          <a href="/chathistory.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow mb-4"
+            aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
                 <h4 class="mb-0 question">Chat History</h6>
@@ -88,7 +84,8 @@
               <i class="fa-solid fa-angle-right"></i>
             </div>
           </a>
-          <a href="custom.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow" aria-current="true">
+          <a href="/custom.html" class="list-group-item list-group-item-action d-flex gap-3 py-3 shadow"
+            aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
                 <h4 class="mb-0 question">Custom Reports</h6>
@@ -99,10 +96,10 @@
         </div>
       </div>
     </div>
-	</main>
+  </main>
 
-  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content  rounded-3 shadow">
         <div class="modal-body p-4 text-center">
@@ -110,17 +107,18 @@
           <p class="mb-0">This feature is only available to registered users.</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-          <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
-          <!-- <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> -->
+          <button type="button" onclick="loginRedirect()"
+            class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
         </div>
       </div>
     </div>
   </div>
 
-	<div id="footer"></div>
+  <div id="footer"></div>
 
-	<script src="./scripts/firebaseAPI_TEAM99.js"></script>
-	<script src="./scripts/skeleton.js"></script>
-	<script src="./scripts/script.js"></script>
+  <script src="./scripts/firebaseAPI_TEAM02.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
+
 </html>

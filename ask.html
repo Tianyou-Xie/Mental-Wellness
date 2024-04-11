@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Other libraries go here -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
   <script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
 
   <!-- Link to styles of your own -->
-  <link href="style.css" rel="stylesheet">
+  <link href="./styles/style.css" rel="stylesheet">
   <link href="./styles/profile.css" rel="stylesheet">
 </head>
 
@@ -51,25 +51,24 @@
   <main>
     <div class="px-4 pt-5 mt-5 mb-3 text-center">
       <h1>What's on your mind?</h1>
-      <!-- <h3>We're here to help</h3> -->
       <i class="fa-regular fa-comments"></i>
     </div>
 
     <div class="container text-start mb-5 shadow overflow-auto custom-chatbot-div">
       <div id="chat-goes-here"></div>
-      <!-- <p id="ai-chat-goes-here" class="text-end"><i class="fa-regular fa-circle-user"></i>&nbsp;</p> -->
     </div>
-      <div class="container mb-3">
-        <textarea class="form-control form-control-lg" id="message" type="text" placeholder="Enter your thoughts"
-          aria-label=".form-control-lg example"></textarea>
-      </div>
-      <div class="container">
-        <button id="myBtn" type="button" onclick="startChat()" class="form-control btn btn-primary btn-block confirm-button">Send</button>
-      </div>
+    <div class="container mb-3">
+      <textarea class="form-control form-control-lg" id="message" type="text" placeholder="Enter your thoughts"
+        aria-label=".form-control-lg example"></textarea>
+    </div>
+    <div class="container">
+      <button id="myBtn" type="button" onclick="startChat()"
+        class="form-control btn btn-primary btn-block confirm-button">Send</button>
+    </div>
   </main>
 
-  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content  rounded-3 shadow">
         <div class="modal-body p-4 text-center">
@@ -77,17 +76,18 @@
           <p class="mb-0">This feature is only available to registered users.</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-          <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
-          <!-- <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> -->
+          <button type="button" onclick="loginRedirect()"
+            class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
         </div>
       </div>
     </div>
   </div>
 
-	<div id="footer"></div>
-	
-	<script src="./scripts/firebaseAPI_TEAM99.js"></script>
-	<script src="./scripts/skeleton.js"></script>
-	<script src="./scripts/script.js"></script>
+  <div id="footer"></div>
+
+  <script src="./scripts/firebaseAPI_TEAM02.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
+
 </html>

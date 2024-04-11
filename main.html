@@ -41,18 +41,18 @@
   <script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
 
   <!-- Link to styles of your own -->
-  <link href="style.css" rel="stylesheet">
+  <link href="./styles/style.css" rel="stylesheet">
 </head>
+
 <body>
   <div id="navigation"></div>
 
   <main>
     <div class="py-5 mt-5 text-center">
       <div class="col-lg-6 mx-auto mb-4">
-        <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
+        <img id='img' alt="profile picture" class="custom-app-logo" src="./images/MentalWellnessLogo.png" />
       </div>
       <h1 class="display-4" id="name-goes-here"></h1>
-      <!-- <strong id="daytime"></strong> -->
       <hr>
       <p class="display-6">How are you feeling today?</p>
     </div>
@@ -78,7 +78,7 @@
 
     <div id="sentimentDisplay" class="text-center mx-5">
       <p style="font-size: large;" id="sentimentText"></p>
-      <a type="button" class="btn btn-default btn-lg" href="ask.html">Chat Now!</a>
+      <a type="button" class="btn btn-default btn-lg" href="/ask.html">Chat Now!</a>
     </div>
 
     <div id="newuser" class="container-fluid text-dark p-5 text-center">
@@ -197,8 +197,8 @@
     </div>
   </main>
 
-  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade modal-sheet" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content  rounded-3 shadow">
         <div class="modal-body p-4 text-center">
@@ -206,18 +206,20 @@
           <p class="mb-0">This feature is only available to registered users.</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-          <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
+          <button type="button" onclick="loginRedirect()"
+            class="btn btn-lg btn-link fs-12 text-decoration-none col-12 py-3 m-0 rounded-0 border-end"><strong>Home</strong></button>
           <!-- <button type="button" onclick="loginRedirect()" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> -->
         </div>
       </div>
     </div>
   </div>
-  
+
   <div id="footer"></div>
 
-  <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+  <script src="./scripts/firebaseAPI_TEAM02.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/main.js"></script>
 </body>
+
 </html>

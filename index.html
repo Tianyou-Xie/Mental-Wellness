@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Other libraries go here -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,14 +41,15 @@
   <script src="https://kit.fontawesome.com/c5ac74b016.js" crossorigin="anonymous"></script>
 
   <!-- Link to styles of your own -->
-  <link href="style.css" rel="stylesheet">
+  <link href="./styles/style.css" rel="stylesheet">
 </head>
+
 <body>
   <div id="navigation"></div>
   <main>
     <div class="pt-5 mt-5 mb-5 text-center">
       <div class="col-lg-6 mx-auto">
-        <img id='img' alt="profile picture" style="height: 35%; width: 35%;" src="./images/MentalWellnessLogo.png" />
+        <img id='img' alt="profile picture" class="custom-app-logo" src="./images/MentalWellnessLogo.png" />
       </div>
       <h1 class="display-5 fw-bold">Welcome to Mental Wellness</h1>
       <div class="col-lg-6 mx-auto">
@@ -60,39 +61,43 @@
     <div class="container marketing">
       <div class="row">
         <div class="col-lg-4">
-          <img style="height: 55%; width: 55%;" src="./images/AdobeStock_502420483.svg">
+          <img class="custom-index-img" src="./images/AdobeStock_502420483.svg">
           <h2 class="fw-normal">User Friendly</h2>
-          <p>Get help with the touch of a button! We offer an array of services all ready and running for you! Just create an account with us and get started!</p>
+          <p>Get help with the touch of a button! We offer an array of services all ready and running for you! Just
+            create an account with us and get started!</p>
         </div>
-        
+
         <div class="col-lg-4">
-          <img id='img' alt="profile picture" style="height: 55%; width: 55%;" src="./images/AdobeStock_650028610.svg" />
+          <img id='img' alt="profile picture" class="custom-index-img" src="./images/AdobeStock_650028610.svg" />
           <h2 class="fw-normal">Anonymous</h2>
-          <p>Stay completely anonymous with us. None of your data will be shared except towards you! All emotions and questions are stashed for the sole purpose of making your mental health better!</p>
+          <p>Stay completely anonymous with us. None of your data will be shared except towards you! All emotions and
+            questions are stashed for the sole purpose of making your mental health better!</p>
         </div>
         <div class="col-lg-4">
-          <img style="height: 55%; width: 55%;" src="./images/AdobeStock_570871703.svg">
+          <img class="custom-index-img" src="./images/AdobeStock_570871703.svg">
           <h2 class="fw-normal">Completely free</h2>
-          <p>No payments, no subscriptions, completely free! Just sign up with your email account and get access to the application, completely free of cost!</p>
+          <p>No payments, no subscriptions, completely free! Just sign up with your email account and get access to the
+            application, completely free of cost!</p>
         </div>
       </div>
     </div>
 
     <div class="container my-5">
       <div class="position-relative p-5 text-center text-muted border border-dashed rounded-5 shadow">
-        <!-- <svg class="bi mt-5 mb-3" width="48" height="48"><use xlink:href="#check2-circle"></use></svg> -->
-        <!-- <i class="fa-solid fa-code"></i> -->
         <h1 class="text-body-emphasis">Get Started Now!</h1>
-        <p class="col-lg-6 mx-auto mb-4">Click the sign-up button below to be redirected to our login page. Just insert the required credentials and you'll be all set for the app!</p>
-          <button onclick="window.location.href = '/login.html'" type="button" class="btn btn-default" aria-label="Close">SignUp/Login</button>
+        <p class="col-lg-6 mx-auto mb-4">Click the sign-up button below to be redirected to our login page. Just insert
+          the required credentials and you'll be all set for the app!</p>
+        <button onclick="window.location.href = '/login.html'" type="button" class="btn btn-default"
+          aria-label="Close">SignUp/Login</button>
       </div>
     </div>
   </main>
 
   <div id="footer"></div>
 
-  <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+  <script src="./scripts/firebaseAPI_TEAM02.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
+
 </html>

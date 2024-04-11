@@ -1,7 +1,9 @@
+// Define a variable to track the status of the button
 var buttonStatus = true;
 
-function edit(){
-    if(buttonStatus) {
+// Function to enable form editing
+function edit() {
+    if (buttonStatus) {
         buttonStatus = false;
         document.getElementById("Submit").disabled = false;
         document.getElementById("Name").disabled = false;
