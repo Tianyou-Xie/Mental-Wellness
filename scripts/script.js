@@ -145,7 +145,7 @@ function startChat() {
         body: JSON.stringify(post),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer PASTE_KEY_HERE"
         }
     }).then((response) => {
         return response.json()
